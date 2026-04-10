@@ -17,8 +17,8 @@ const ContactSection = () => {
     if (!name || !phone) return;
 
     toast({
-      title: "Request Sent!",
-      description: "We'll get back to you shortly.",
+      title: "Upit poslan!",
+      description: "Javit ćemo vam se u najkraćem mogućem roku.",
     });
     setFormData({ name: "", phone: "", message: "" });
   };
@@ -34,13 +34,13 @@ const ContactSection = () => {
           transition={{ duration: 0.6 }}
         >
           <span className="text-xs font-medium tracking-widest uppercase text-muted-foreground">
-            Get In Touch
+            Kontaktirajte nas
           </span>
           <h2 className="mt-3 text-3xl md:text-4xl font-bold text-foreground">
-            Request a Free Quote
+            Zatražite besplatnu ponudu
           </h2>
           <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-            Choose the most convenient way to reach us. We respond within 30 minutes during business hours.
+            Odaberite najlakši način da nas kontaktirate. Odgovaramo u roku od 30 minuta tijekom radnog vremena.
           </p>
         </motion.div>
 
@@ -57,16 +57,16 @@ const ContactSection = () => {
             <div className="mb-5 inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary text-primary-foreground transition-transform duration-300 group-hover:scale-110">
               <Phone className="h-6 w-6" />
             </div>
-            <h3 className="text-xl font-semibold text-foreground mb-2">Call Now</h3>
+            <h3 className="text-xl font-semibold text-foreground mb-2">Nazovite odmah</h3>
             <p className="text-muted-foreground text-sm mb-4">
-              Speak directly with our logistics team for immediate assistance.
+              Razgovarajte izravno s našim logističkim timom za brzu pomoć.
             </p>
             <span className="text-lg font-semibold text-foreground">+1 (234) 567-890</span>
           </motion.a>
 
           {/* WhatsApp */}
           <motion.a
-            href="https://wa.me/1234567890?text=Hi%2C%20I%27d%20like%20to%20get%20a%20quote%20for%20transport%20services."
+            href="https://wa.me/1234567890?text=Pozdrav%2C%20želio%20bih%20zatražiti%20ponudu%20za%20usluge%20transporta."
             target="_blank"
             rel="noopener noreferrer"
             className="group flex flex-col items-center text-center p-8 rounded-2xl border border-border bg-card transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
@@ -78,11 +78,11 @@ const ContactSection = () => {
             <div className="mb-5 inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary text-primary-foreground transition-transform duration-300 group-hover:scale-110">
               <MessageCircle className="h-6 w-6" />
             </div>
-            <h3 className="text-xl font-semibold text-foreground mb-2">WhatsApp Us</h3>
+            <h3 className="text-xl font-semibold text-foreground mb-2">Pišite nam na WhatsApp</h3>
             <p className="text-muted-foreground text-sm mb-4">
-              Quick and easy. Send us a message and get a response in minutes.
+              Brzo i jednostavno. Pošaljite nam poruku i dobit ćete odgovor u roku od par minuta.
             </p>
-            <span className="text-lg font-semibold text-foreground">Chat on WhatsApp →</span>
+            <span className="text-lg font-semibold text-foreground">Razgovarajmo na WhatsApp-u →</span>
           </motion.a>
 
           {/* Contact Form */}
@@ -93,10 +93,10 @@ const ContactSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h3 className="text-xl font-semibold text-foreground mb-6 text-center">Send a Request</h3>
+            <h3 className="text-xl font-semibold text-foreground mb-6 text-center">Pošaljite upit</h3>
             <form onSubmit={handleSubmit} className="space-y-4">
               <Input
-                placeholder="Your Name"
+                placeholder="Vaše ime"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 maxLength={100}
@@ -104,7 +104,7 @@ const ContactSection = () => {
                 className="rounded-xl"
               />
               <Input
-                placeholder="Phone Number"
+                placeholder="Broj telefona"
                 type="tel"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -113,7 +113,7 @@ const ContactSection = () => {
                 className="rounded-xl"
               />
               <Textarea
-                placeholder="Describe what you need transported..."
+                placeholder="Opišite što trebate transportirati..."
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 maxLength={1000}
@@ -122,7 +122,7 @@ const ContactSection = () => {
               />
               <Button type="submit" className="w-full rounded-xl py-5 font-semibold transition-all duration-300 hover:scale-[1.02]">
                 <Send className="mr-2 h-4 w-4" />
-                Send Request
+                Pošalji upit
               </Button>
             </form>
           </motion.div>

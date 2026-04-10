@@ -4,23 +4,23 @@ import { ShieldCheck, Wrench, Clock, CheckCircle } from "lucide-react";
 const trustPoints = [
   {
     icon: ShieldCheck,
-    title: "Cargo Insurance",
-    description: "Every shipment is fully insured. Your belongings are protected from pickup to delivery.",
+    title: "Osiguranje tereta",
+    description: "Svaka pošiljka je u potpunosti osigurana. Vaše su stvari zaštićene od preuzimanja do dostave.",
   },
   {
     icon: Wrench,
-    title: "Modern Equipment",
-    description: "State-of-the-art vehicles and professional packing materials for maximum safety.",
+    title: "Moderna oprema",
+    description: "Vrhunska vozila i profesionalni materijali za pakiranje za maksimalnu sigurnost.",
   },
   {
     icon: Clock,
-    title: "On-Time Guarantee",
-    description: "We respect your schedule. Punctual pickups and deliveries, every single time.",
+    title: "Jamstvo točnosti",
+    description: "Poštujemo vaš raspored. Točna preuzimanja i dostave, svaki put.",
   },
   {
     icon: CheckCircle,
-    title: "Trained Professionals",
-    description: "Our team is fully trained in safe handling, disassembly, and reassembly of furniture.",
+    title: "Obučeni stručnjaci",
+    description: "Naš tim je u potpunosti obučen za sigurno rukovanje, demontažu i montažu namještaja.",
   },
 ];
 
@@ -36,13 +36,13 @@ const TrustSection = () => {
           transition={{ duration: 0.6 }}
         >
           <span className="text-xs font-medium tracking-widest uppercase text-muted-foreground">
-            Why Choose Us
+            Zašto odabrati nas
           </span>
           <h2 className="mt-3 text-3xl md:text-4xl font-bold text-foreground">
-            Trust & Safety First
+            Povjerenje i sigurnost na prvom mjestu
           </h2>
           <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-            Your cargo's safety is our top priority. We combine modern equipment with comprehensive insurance for total peace of mind.
+            Sigurnost vašeg tereta naš je glavni prioritet. Kombiniramo modernu opremu sa sveobuhvatnim osiguranjem za potpuni mir.
           </p>
         </motion.div>
 
@@ -75,9 +75,9 @@ const TrustSection = () => {
         >
           <ShieldCheck className="h-12 w-12 text-foreground flex-shrink-0" />
           <div>
-            <h3 className="text-xl font-bold text-foreground mb-2">Full Cargo Insurance Included</h3>
+            <h3 className="text-xl font-bold text-foreground mb-2">Potpuno osiguranje tereta uključeno</h3>
             <p className="text-muted-foreground leading-relaxed">
-              Every transport comes with comprehensive cargo insurance at no extra cost. Whether it's a single sofa or a full office relocation, your goods are covered against damage and loss throughout the entire journey.
+              Svaki transport dolazi sa sveobuhvatnim osiguranjem tereta bez dodatnih troškova. Bilo da se radi o jednoj sofi ili kompletnoj selidbi ureda, vaša je roba pokrivena od oštećenja i gubitka tijekom cijelog putovanja.
             </p>
           </div>
         </motion.div>

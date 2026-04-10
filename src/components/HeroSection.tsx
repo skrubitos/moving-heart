@@ -15,7 +15,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <span className="inline-block mb-6 px-4 py-1.5 text-xs font-medium tracking-widest uppercase border border-border rounded-full text-muted-foreground">
-            Furniture Transport & Relocation
+            Prijevoz namještaja i selidbe
           </span>
         </motion.div>
 
@@ -25,11 +25,11 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
         >
-          Safe Moves.
+          Sigurne selidbe.
           <br />
-          Reliable Logistics.
+          Pouzdana logistika.
           <br />
-          <span className="text-muted-foreground">Your Partner in Motion.</span>
+          <span className="text-muted-foreground">Vaš partner u pokretu.</span>
         </motion.h1>
 
         <motion.p
@@ -38,8 +38,8 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
         >
-          Professional furniture delivery & residential relocation for individuals.
-          Dedicated B2B logistics solutions for businesses. Fully insured. Always on time.
+          Profesionalna dostava namještaja i selidbe za fizičke osobe.
+          Namjenska B2B logistička rješenja za tvrtke. Potpuno osigurano. Uvijek na vrijeme.
         </motion.p>
 
         <motion.div
@@ -53,7 +53,7 @@ const HeroSection = () => {
             className="group px-8 py-6 text-base font-semibold rounded-full transition-all duration-300 hover:scale-105"
             onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
           >
-            Get a Quote
+            Zatražite ponudu
             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Button>
 
@@ -65,7 +65,7 @@ const HeroSection = () => {
           >
             <a href="tel:+1234567890">
               <Phone className="mr-2 h-4 w-4" />
-              Call Now
+              Nazovite odmah
             </a>
           </Button>
         </motion.div>

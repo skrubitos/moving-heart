@@ -4,21 +4,21 @@ import { Truck, Home, Building2 } from "lucide-react";
 const services = [
   {
     icon: Truck,
-    title: "Furniture Delivery",
+    title: "Dostava namještaja",
     description:
-      "Professional handling and transport of furniture from stores to your doorstep. We treat every piece as if it were our own.",
+      "Profesionalno rukovanje i prijevoz namještaja iz trgovina do vašeg kućnog praga. Svaki komad tretiramo s najvećom pažnjom.",
   },
   {
     icon: Home,
-    title: "Residential Relocation",
+    title: "Stambene selidbe",
     description:
-      "Stress-free apartment and house moving. From careful packing to precise placement — we handle it all.",
+      "Selidbe stanova i kuća bez stresa. Od pažljivog pakiranja do preciznog postavljanja – mi se brinemo za sve.",
   },
   {
     icon: Building2,
-    title: "B2B Logistics",
+    title: "B2B Logistika",
     description:
-      "Dedicated transport solutions for businesses. Reliable, scalable, and tailored to your company's logistics needs.",
+      "Namjenska transportna rješenja za tvrtke. Pouzdana, skalabilna i prilagođena logističkim potrebama vašeg poslovanja.",
   },
 ];
 
@@ -43,13 +43,13 @@ const ServicesSection = () => {
           transition={{ duration: 0.6 }}
         >
           <span className="text-xs font-medium tracking-widest uppercase text-muted-foreground">
-            What We Do
+            Što radimo
           </span>
           <h2 className="mt-3 text-3xl md:text-4xl font-bold text-foreground">
-            Our Services
+            Naše usluge
           </h2>
           <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-            Comprehensive logistics solutions designed for both private individuals and businesses.
+            Sveobuhvatna logistička rješenja dizajnirana za privatne osobe i tvrtke.
           </p>
         </motion.div>
 

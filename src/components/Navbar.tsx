@@ -3,9 +3,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { label: "Services", href: "#services" },
-  { label: "Why Us", href: "#trust" },
-  { label: "Contact", href: "#contact" },
+  { label: "Usluge", href: "#services" },
+  { label: "Zašto mi", href: "#trust" },
+  { label: "Kontakt", href: "#contact" },
 ];
 
 const Navbar = () => {
@@ -38,7 +38,7 @@ const Navbar = () => {
             onClick={() => scrollTo("#contact")}
             className="text-sm font-semibold px-5 py-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
           >
-            Get a Quote
+            Zatražite ponudu
           </button>
         </div>
 
@@ -72,7 +72,7 @@ const Navbar = () => {
                 onClick={() => scrollTo("#contact")}
                 className="mt-2 text-sm font-semibold px-5 py-2.5 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors text-center"
               >
-                Get a Quote
+                Zatražite ponudu
               </button>
             </div>
           </motion.div>
