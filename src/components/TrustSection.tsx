@@ -6,22 +6,22 @@ const trustPoints = [
   {
     icon: ShieldCheck,
     title: "Osiguranje tereta",
-    description: "Svaka pošiljka potpuno osigurana. Zaštita od preuzimanja do dostave.",
+    description: "Svaka pošiljka potpuno osigurana.",
   },
   {
     icon: Wrench,
     title: "Moderna oprema",
-    description: "Vrhunska vozila i profesionalni materijali za pakiranje.",
+    description: "Profesionalni materijali za pakiranje.",
   },
   {
     icon: Clock,
     title: "Jamstvo točnosti",
-    description: "Točna preuzimanja i dostave — poštujemo vaš raspored.",
+    description: "Poštujemo vaše vrijeme.",
   },
   {
     icon: CheckCircle,
     title: "Kvalificirani tim",
-    description: "Obučeni stručnjaci za sigurno rukovanje i montažu namještaja.",
+    description: "Obučeni stručnjaci za sigurno rukovanje  namještajem.",
   },
 ];
 
@@ -115,6 +115,7 @@ const TrustSection = () => {
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7 }}
         >
           <img
@@ -123,6 +124,7 @@ const TrustSection = () => {
             className="w-full h-56 md:h-80 object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-accent/85 via-accent/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-accent/70 via-accent/30 to-transparent" />
           <div className="absolute inset-0 flex items-center px-10 md:px-14">
             <div>
               <p className="text-white/65 text-xs font-bold uppercase tracking-widest mb-2">

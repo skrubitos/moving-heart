@@ -7,9 +7,9 @@ import kombiLogoImg from "../../slike/kombi logo.jpeg";
 
 const trustBullets = [
   "Potpuno osiguranje tereta uključeno u cijenu",
-  "Besplatna procjena – bez obaveza",
-  "Jamstvo točnosti – stižemo na vrijeme",
-  "Profesionalna montaža i demontaža namještaja",
+  "Besplatna procjena ",
+  "Jamstvo točnosti ",
+
 ];
 
 const stats = [
@@ -20,8 +20,8 @@ const stats = [
 
 const panelFeatures = [
   { icon: ShieldCheck, label: "Osiguranje uključeno u cijenu", sub: "Bez doplate — potpuna zaštita" },
-  { icon: Star,        label: "Ocjena zadovoljstva 4.9 / 5",  sub: "Na temelju 200+ recenzija" },
-  { icon: Clock,       label: "Dostupni 7 dana u tjednu",     sub: "Odgovaramo u roku od 30 min" },
+  { icon: Star, label: "Ocjena zadovoljstva 4.9 / 5", sub: "Na temelju 200+ recenzija" },
+  { icon: Clock, label: "Dostupni 7 dana u tjednu", sub: "Odgovaramo u roku od 30 min" },
 ];
 
 const HeroSection = () => {

@@ -67,7 +67,9 @@ const Footer = () => {
 
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs opacity-40">
           <span>© {new Date().getFullYear()} Kinesis Transport. Sva prava pridržana.</span>
-          <span>Split, Hrvatska · Dostupni 7 dana</span>
+          <span>Split, Hrvatska
+
+          </span>
         </div>
       </div>
     </footer>

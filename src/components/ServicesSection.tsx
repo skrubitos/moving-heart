@@ -45,8 +45,7 @@ const ServicesSection = () => {
             Što možemo učiniti za vas
           </h2>
           <p className="mt-4 text-muted-foreground max-w-xl mx-auto text-sm md:text-base">
-            Cjelovita logistička rješenja za fizičke osobe i poslovne subjekte —
-            sve pod jednim krovom.
+            Cjelovita logistička rješenja za fizičke osobe i poslovne subjekte.
           </p>
         </motion.div>
 
