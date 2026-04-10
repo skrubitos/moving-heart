@@ -5,7 +5,7 @@ const trustPoints = [
   {
     icon: ShieldCheck,
     title: "Osiguranje tereta",
-    description: "Svaka pošiljka je u potpunosti osigurana. Vaše su stvari zaštićene od preuzimanja do dostave.",
+    description: "Svaka pošiljka je u potpunosti osigurana. Vaš je inventar zaštićen od preuzimanja do dostave.",
   },
   {
     icon: Wrench,
@@ -19,7 +19,7 @@ const trustPoints = [
   },
   {
     icon: CheckCircle,
-    title: "Obučeni stručnjaci",
+    title: "Kvalificirani tim profesionalaca",
     description: "Naš tim je u potpunosti obučen za sigurno rukovanje, demontažu i montažu namještaja.",
   },
 ];
@@ -39,7 +39,7 @@ const TrustSection = () => {
             Zašto odabrati nas
           </span>
           <h2 className="mt-3 text-3xl md:text-4xl font-bold text-foreground">
-            Povjerenje i sigurnost na prvom mjestu
+            Sigurnost i integritet vašeg tereta kao apsolutni prioritet
           </h2>
           <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
             Sigurnost vašeg tereta naš je glavni prioritet. Kombiniramo modernu opremu sa sveobuhvatnim osiguranjem za potpuni mir.
@@ -75,9 +75,9 @@ const TrustSection = () => {
         >
           <ShieldCheck className="h-12 w-12 text-foreground flex-shrink-0" />
           <div>
-            <h3 className="text-xl font-bold text-foreground mb-2">Potpuno osiguranje tereta uključeno</h3>
+            <h3 className="text-xl font-bold text-foreground mb-2">Potpuno osiguranje imovine uključeno</h3>
             <p className="text-muted-foreground leading-relaxed">
-              Svaki transport dolazi sa sveobuhvatnim osiguranjem tereta bez dodatnih troškova. Bilo da se radi o jednoj sofi ili kompletnoj selidbi ureda, vaša je roba pokrivena od oštećenja i gubitka tijekom cijelog putovanja.
+              Svaki transport pokriven je policom osiguranja imovine bez dodatnih troškova. Bilo da se radi o jednoj sofi ili kompletnoj selidbi ureda, vaš je teret pokriven od oštećenja i gubitka tijekom cijelog putovanja.
             </p>
           </div>
         </motion.div>

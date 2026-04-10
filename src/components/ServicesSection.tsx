@@ -10,9 +10,9 @@ const services = [
   },
   {
     icon: Home,
-    title: "Stambene selidbe",
+    title: "Selidbe kućanstava",
     description:
-      "Selidbe stanova i kuća bez stresa. Od pažljivog pakiranja do preciznog postavljanja – mi se brinemo za sve.",
+      "Preseljenje vašeg doma bez stresa – od stručnog pakiranja do preciznog postavljanja.",
   },
   {
     icon: Building2,
@@ -43,13 +43,13 @@ const ServicesSection = () => {
           transition={{ duration: 0.6 }}
         >
           <span className="text-xs font-medium tracking-widest uppercase text-muted-foreground">
-            Što radimo
+            Djelatnosti
           </span>
           <h2 className="mt-3 text-3xl md:text-4xl font-bold text-foreground">
             Naše usluge
           </h2>
           <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-            Sveobuhvatna logistička rješenja dizajnirana za privatne osobe i tvrtke.
+            Cjelovita logistička rješenja prilagođena potrebama građana i poslovnih subjekata.
           </p>
         </motion.div>
 

@@ -29,7 +29,7 @@ const HeroSection = () => {
           <br />
           Pouzdana logistika.
           <br />
-          <span className="text-muted-foreground">Vaš partner u pokretu.</span>
+          <span className="text-muted-foreground">Vaš partner za bezbrižan transport.</span>
         </motion.h1>
 
         <motion.p
@@ -38,8 +38,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
         >
-          Profesionalna dostava namještaja i selidbe za fizičke osobe.
-          Namjenska B2B logistička rješenja za tvrtke. Potpuno osigurano. Uvijek na vrijeme.
+          Profesionalne usluge selidbi za fizičke osobe i namjenska B2B logistička rješenja. Potpuno osigurano. Uvijek na vrijeme.
         </motion.p>
 
         <motion.div
@@ -63,7 +62,7 @@ const HeroSection = () => {
             className="px-8 py-6 text-base font-semibold rounded-full transition-all duration-300 hover:scale-105"
             asChild
           >
-            <a href="tel:+1234567890">
+            <a href="tel:+385976754606">
               <Phone className="mr-2 h-4 w-4" />
               Nazovite odmah
             </a>

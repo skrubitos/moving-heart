@@ -38,7 +38,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-sm opacity-60">
                 <Phone className="h-4 w-4 flex-shrink-0" />
-                +1 (234) 567-890
+                +385 97 675 4606
               </li>
               <li className="flex items-center gap-3 text-sm opacity-60">
                 <Mail className="h-4 w-4 flex-shrink-0" />
@@ -46,7 +46,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3 text-sm opacity-60">
                 <MapPin className="h-4 w-4 flex-shrink-0" />
-                Vaš grad, Država
+                Split, Hrvatska
               </li>
             </ul>
           </div>

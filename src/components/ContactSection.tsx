@@ -47,7 +47,7 @@ const ContactSection = () => {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Call Now */}
           <motion.a
-            href="tel:+1234567890"
+            href="tel:+385976754606"
             className="group flex flex-col items-center text-center p-8 rounded-2xl border border-border bg-card transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -61,12 +61,12 @@ const ContactSection = () => {
             <p className="text-muted-foreground text-sm mb-4">
               Razgovarajte izravno s našim logističkim timom za brzu pomoć.
             </p>
-            <span className="text-lg font-semibold text-foreground">+1 (234) 567-890</span>
+            <span className="text-lg font-semibold text-foreground">+385 97 675 4606</span>
           </motion.a>
 
           {/* WhatsApp */}
           <motion.a
-            href="https://wa.me/1234567890?text=Pozdrav%2C%20želio%20bih%20zatražiti%20ponudu%20za%20usluge%20transporta."
+            href="https://wa.me/385976754606?text=Pozdrav%2C%20želio%20bih%20zatražiti%20ponudu%20za%20usluge%20transporta."
             target="_blank"
             rel="noopener noreferrer"
             className="group flex flex-col items-center text-center p-8 rounded-2xl border border-border bg-card transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
@@ -82,7 +82,7 @@ const ContactSection = () => {
             <p className="text-muted-foreground text-sm mb-4">
               Brzo i jednostavno. Pošaljite nam poruku i dobit ćete odgovor u roku od par minuta.
             </p>
-            <span className="text-lg font-semibold text-foreground">Razgovarajmo na WhatsApp-u →</span>
+            <span className="text-lg font-semibold text-foreground">Kontaktirajte nas putem WhatsAppa</span>
           </motion.a>
 
           {/* Contact Form */}
@@ -113,7 +113,7 @@ const ContactSection = () => {
                 className="rounded-xl"
               />
               <Textarea
-                placeholder="Opišite što trebate transportirati..."
+                placeholder="Specifikacija tereta i dodatne napomene..."
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 maxLength={1000}
