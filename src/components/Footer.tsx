@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin, Truck } from "lucide-react";
+import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/contact";
 
 const Footer = () => {
   return (
@@ -6,7 +7,6 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-12">
 
-          {/* Brand */}
           <div>
             <div className="flex items-center gap-2.5 mb-4">
               <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
@@ -21,7 +21,6 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Quick links */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-widest mb-5 opacity-50">Brzi linkovi</h4>
             <ul className="space-y-2.5">
@@ -42,24 +41,17 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact info */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-widest mb-5 opacity-50">Kontakt</h4>
             <ul className="space-y-3">
               <li>
-                <a
-                  href="tel:+385976754606"
-                  className="flex items-center gap-3 text-sm opacity-55 hover:opacity-100 transition-opacity"
-                >
+                <a href={PHONE_HREF} className="flex items-center gap-3 text-sm opacity-55 hover:opacity-100 transition-opacity">
                   <Phone className="h-4 w-4 flex-shrink-0" />
-                  +385 97 675 4606
+                  {PHONE_DISPLAY}
                 </a>
               </li>
               <li>
-                <a
-                  href="mailto:info@kinesistransport.com"
-                  className="flex items-center gap-3 text-sm opacity-55 hover:opacity-100 transition-opacity"
-                >
+                <a href="mailto:info@kinesistransport.com" className="flex items-center gap-3 text-sm opacity-55 hover:opacity-100 transition-opacity">
                   <Mail className="h-4 w-4 flex-shrink-0" />
                   info@kinesistransport.com
                 </a>
@@ -70,6 +62,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
+
         </div>
 
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs opacity-40">
