@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Truck, Home, Building2 } from "lucide-react";
+import { Truck, Home, Building2, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const services = [
   {
@@ -18,7 +19,7 @@ const services = [
     icon: Building2,
     title: "B2B Logistika",
     description:
-      "Namjenska transportna rješenja za tvrtke. Pouzdana, skalabilna i prilagođena logističkim potrebama vašeg poslovanja.",
+      "Pouzdana i prilagođena transportna rješenja za vaše poslovanje.",
   },
 ];
 
@@ -53,7 +54,7 @@ const ServicesSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto pb-8 md:pb-0 snap-x snap-mandatory scrollbar-hide">
           {services.map((service, i) => (
             <motion.div
               key={service.title}
@@ -62,17 +63,24 @@ const ServicesSection = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-80px" }}
-              className="group relative bg-card border border-border rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+              className="group relative flex-shrink-0 w-[85%] md:w-full snap-center bg-card border border-border rounded-2xl p-6 md:p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
             >
-              <div className="mb-6 inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary text-primary-foreground transition-transform duration-300 group-hover:scale-110">
-                <service.icon className="h-6 w-6" />
+              <div className="flex flex-row md:flex-col items-start gap-4 md:gap-0">
+                <div className="mb-0 md:mb-6 inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl bg-primary/10 text-primary transition-transform duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground">
+                  <service.icon className="h-5 w-5 md:h-6 md:h-6" />
+                </div>
+                <div>
+                  <h3 className="text-lg md:text-xl font-bold text-foreground mb-2 md:mb-3">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed line-clamp-2 md:line-clamp-none">
+                    {service.description}
+                  </p>
+                </div>
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-3">
-                {service.title}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {service.description}
-              </p>
+              <Button variant="link" className="mt-4 p-0 h-auto font-semibold text-primary group-hover:gap-2 transition-all" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>
+                Zatražite ponudu <ArrowRight className="ml-1 h-4 w-4" />
+              </Button>
             </motion.div>
           ))}
         </div>

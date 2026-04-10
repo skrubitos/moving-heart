@@ -46,7 +46,7 @@ const TrustSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-8">
           {trustPoints.map((point, i) => (
             <motion.div
               key={point.title}
@@ -54,13 +54,15 @@ const TrustSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="text-center group"
+              className="flex flex-row md:flex-col items-center md:text-center gap-5 group"
             >
-              <div className="mx-auto mb-5 inline-flex items-center justify-center w-16 h-16 rounded-full border-2 border-border transition-all duration-300 group-hover:border-foreground group-hover:bg-primary group-hover:text-primary-foreground">
-                <point.icon className="h-7 w-7" />
+              <div className="flex-shrink-0 inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full border border-border transition-all duration-300 group-hover:border-primary group-hover:bg-primary/5 text-muted-foreground group-hover:text-primary">
+                <point.icon className="h-6 w-6 md:h-7 md:h-7" />
               </div>
-              <h3 className="text-lg font-semibold text-foreground mb-2">{point.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{point.description}</p>
+              <div>
+                <h3 className="text-base md:text-lg font-bold text-foreground mb-1 md:mb-2">{point.title}</h3>
+                <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">{point.description}</p>
+              </div>
             </motion.div>
           ))}
         </div>
