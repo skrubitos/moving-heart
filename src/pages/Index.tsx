@@ -4,6 +4,7 @@ import ServicesSection from "@/components/ServicesSection";
 import TrustSection from "@/components/TrustSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import StickyContact from "@/components/StickyContact";
 
 const Index = () => {
   return (
@@ -16,6 +17,7 @@ const Index = () => {
       </div>
       <ContactSection />
       <Footer />
+      <StickyContact />
     </div>
   );
 };

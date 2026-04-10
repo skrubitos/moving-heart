@@ -1,88 +1,170 @@
 import { motion } from "framer-motion";
-import { ShieldCheck, Wrench, Clock, CheckCircle } from "lucide-react";
+import { ShieldCheck, Wrench, Clock, CheckCircle, Star, Quote } from "lucide-react";
 
 const trustPoints = [
   {
     icon: ShieldCheck,
     title: "Osiguranje tereta",
-    description: "Svaka pošiljka je u potpunosti osigurana. Vaš je inventar zaštićen od preuzimanja do dostave.",
+    description: "Svaka pošiljka potpuno osigurana. Zaštita od preuzimanja do dostave.",
   },
   {
     icon: Wrench,
     title: "Moderna oprema",
-    description: "Vrhunska vozila i profesionalni materijali za pakiranje za maksimalnu sigurnost.",
+    description: "Vrhunska vozila i profesionalni materijali za pakiranje.",
   },
   {
     icon: Clock,
     title: "Jamstvo točnosti",
-    description: "Poštujemo vaš raspored. Točna preuzimanja i dostave, svaki put.",
+    description: "Točna preuzimanja i dostave — poštujemo vaš raspored.",
   },
   {
     icon: CheckCircle,
-    title: "Kvalificirani tim profesionalaca",
-    description: "Naš tim je u potpunosti obučen za sigurno rukovanje, demontažu i montažu namještaja.",
+    title: "Kvalificirani tim",
+    description: "Obučeni stručnjaci za sigurno rukovanje i montažu namještaja.",
+  },
+];
+
+const testimonials = [
+  {
+    name: "Marko D.",
+    location: "Split",
+    text: "Koristio sam Kinesis Transport za selidbu stana. Sve je prošlo besprijekorno — točni, profesionalni i iznimno pažljivi prema namještaju. Preporučam svima!",
+    rating: 5,
+  },
+  {
+    name: "Ana K.",
+    location: "Menadžerica ureda, Split",
+    text: "Selili smo ured s 15 zaposlenika. Kinesis je sve organizirao do detalja, namještaj montirali na novoj lokaciji isti dan. Nula stresa, nula zastoja.",
+    rating: 5,
+  },
+  {
+    name: "Ivan P.",
+    location: "Trogir",
+    text: "Teret je stigao neoštećen, cijena fer i transparentna. Nijednog trenutka nisam brinuo za svoju imovinu. Definitivno ću ih kontaktirati opet.",
+    rating: 5,
   },
 ];
 
 const TrustSection = () => {
   return (
     <section className="py-24 md:py-32 bg-background">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
+
+        {/* Header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-14"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-xs font-medium tracking-widest uppercase text-muted-foreground">
+          <span className="text-xs font-semibold tracking-widest uppercase text-primary">
             Zašto odabrati nas
           </span>
-          <h2 className="mt-3 text-3xl md:text-4xl font-bold text-foreground">
-            Sigurnost i integritet vašeg tereta kao apsolutni prioritet
+          <h2 className="mt-3 text-3xl md:text-4xl font-extrabold text-foreground">
+            Sigurnost i integritet kao apsolutni prioritet
           </h2>
-          <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-            Sigurnost vašeg tereta naš je glavni prioritet. Kombiniramo modernu opremu sa sveobuhvatnim osiguranjem za potpuni mir.
+          <p className="mt-4 text-muted-foreground max-w-xl mx-auto text-sm md:text-base">
+            Moderna oprema, sveobuhvatno osiguranje i iskusan tim — sve što trebate za miran transport.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-8">
+        {/* Trust points grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {trustPoints.map((point, i) => (
             <motion.div
               key={point.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="flex flex-row md:flex-col items-center md:text-center gap-5 group"
+              className="group flex flex-col items-center text-center p-6 rounded-2xl border border-border hover:border-primary/20 hover:shadow-md transition-all duration-300 bg-card"
             >
-              <div className="flex-shrink-0 inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full border border-border transition-all duration-300 group-hover:border-primary group-hover:bg-primary/5 text-muted-foreground group-hover:text-primary">
-                <point.icon className="h-6 w-6 md:h-7 md:h-7" />
+              <div className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-full border-2 border-border group-hover:border-primary/30 group-hover:bg-primary/5 text-muted-foreground group-hover:text-primary transition-all duration-300">
+                <point.icon className="h-6 w-6" />
               </div>
-              <div>
-                <h3 className="text-base md:text-lg font-bold text-foreground mb-1 md:mb-2">{point.title}</h3>
-                <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">{point.description}</p>
-              </div>
+              <h3 className="text-base font-bold text-foreground mb-1.5">{point.title}</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">{point.description}</p>
             </motion.div>
           ))}
         </div>
 
         {/* Insurance banner */}
         <motion.div
-          className="mt-16 rounded-2xl border border-border bg-secondary/50 p-8 md:p-12 flex flex-col md:flex-row items-center gap-6"
+          className="mt-10 rounded-2xl border border-border bg-secondary/60 p-8 md:p-10 flex flex-col md:flex-row items-center gap-6 shadow-sm"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
         >
-          <ShieldCheck className="h-12 w-12 text-foreground flex-shrink-0" />
+          <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
+            <ShieldCheck className="h-7 w-7 text-primary" />
+          </div>
           <div>
-            <h3 className="text-xl font-bold text-foreground mb-2">Potpuno osiguranje imovine uključeno</h3>
-            <p className="text-muted-foreground leading-relaxed">
-              Svaki transport pokriven je policom osiguranja imovine bez dodatnih troškova. Bilo da se radi o jednoj sofi ili kompletnoj selidbi ureda, vaš je teret pokriven od oštećenja i gubitka tijekom cijelog putovanja.
+            <h3 className="text-xl font-bold text-foreground mb-1.5">
+              Potpuno osiguranje imovine — uključeno u cijenu
+            </h3>
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
+              Svaki transport pokriven je policom osiguranja bez dodatnih troškova. Bilo da se radi o
+              jednoj sofi ili kompletnoj selidbi ureda, vaš je teret zaštićen od oštećenja i gubitka
+              tijekom cijelog putovanja.
             </p>
           </div>
         </motion.div>
+
+        {/* ── Testimonials ── */}
+        <motion.div
+          className="mt-20 text-center mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="text-xs font-semibold tracking-widest uppercase text-primary">
+            Recenzije
+          </span>
+          <h2 className="mt-3 text-2xl md:text-3xl font-extrabold text-foreground">
+            Što kažu naši klijenti
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {testimonials.map((t, i) => (
+            <motion.div
+              key={t.name}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.55, delay: i * 0.12 }}
+              className="relative bg-card border border-border rounded-2xl p-7 flex flex-col gap-4 hover:shadow-lg hover:border-primary/20 transition-all duration-300"
+            >
+              {/* Quote icon */}
+              <Quote className="h-8 w-8 text-primary/20 absolute top-6 right-6" />
+
+              {/* Stars */}
+              <div className="flex gap-1">
+                {Array.from({ length: t.rating }).map((_, si) => (
+                  <Star key={si} className="h-4 w-4 fill-primary text-primary" />
+                ))}
+              </div>
+
+              <p className="text-sm text-foreground leading-relaxed flex-1">
+                "{t.text}"
+              </p>
+
+              <div className="flex items-center gap-3 pt-2 border-t border-border">
+                <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm flex-shrink-0">
+                  {t.name.charAt(0)}
+                </div>
+                <div>
+                  <div className="text-sm font-semibold text-foreground">{t.name}</div>
+                  <div className="text-xs text-muted-foreground">{t.location}</div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
       </div>
     </section>
   );
