@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Phone, MessageCircle, Send, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,9 +7,52 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { PHONE_DISPLAY, PHONE_HREF, WHATSAPP_URL } from "@/lib/contact";
 
+/**
+ * Returns [ref, visible].
+ * On mobile (< 640px): starts hidden, reveals via IntersectionObserver after `delay` ms.
+ * On desktop: starts already visible so existing layout is unchanged.
+ */
+const useScrollReveal = (delay = 0) => {
+  const isMobileAtInit =
+    typeof window !== "undefined"
+      ? window.matchMedia("(max-width: 639px)").matches
+      : false;
+
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(!isMobileAtInit);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || !window.matchMedia("(max-width: 639px)").matches) return;
+
+    let timer: ReturnType<typeof setTimeout>;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          timer = setTimeout(() => setVisible(true), delay);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 },
+    );
+
+    observer.observe(el);
+    return () => {
+      observer.disconnect();
+      clearTimeout(timer);
+    };
+  }, [delay]);
+
+  return [ref, visible] as const;
+};
+
 const ContactSection = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({ name: "", phone: "", message: "" });
+
+  const [whatsappRef, whatsappVisible] = useScrollReveal(0);
+  const [phoneRef, phoneVisible] = useScrollReveal(150);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -58,46 +101,71 @@ const ContactSection = () => {
 
         <div className="grid lg:grid-cols-3 gap-6">
 
-          <motion.a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex flex-col items-center text-center p-8 rounded-2xl border-2 border-[#25D366]/30 bg-card transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-[#25D366]/60 relative overflow-hidden"
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+          {/* WhatsApp card — mobile: scroll-reveal via IntersectionObserver */}
+          <div
+            ref={whatsappRef}
+            className={`will-change-transform transition-[opacity,transform] duration-500 ease-out ${
+              whatsappVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-[40px]"
+            }`}
           >
-            <span className="absolute top-4 right-4 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#25D366]/10 text-[#25D366] border border-[#25D366]/20">
-              Preporučeno
-            </span>
-            <div className="mb-5 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#25D366] text-white shadow-lg shadow-[#25D366]/30 transition-transform duration-300 group-hover:scale-110">
-              <MessageCircle className="h-7 w-7" />
-            </div>
-            <h3 className="text-xl font-bold text-foreground mb-2">WhatsApp</h3>
-            <p className="text-muted-foreground text-sm mb-5 leading-relaxed">
-              Najbrže odgovorimo. Pošaljite nam poruku i dobit ćete ponudu.
-            </p>
+            <motion.a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col items-center text-center p-8 rounded-2xl border-2 border-[#25D366]/30 bg-card transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-[#25D366]/60 relative overflow-hidden"
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <span className="absolute top-4 right-4 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#25D366]/10 text-[#25D366] border border-[#25D366]/20">
+                Preporučeno
+              </span>
+              <div className="mb-5 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#25D366] text-white shadow-lg shadow-[#25D366]/30 transition-transform duration-300 group-hover:scale-110">
+                <MessageCircle className="h-7 w-7" />
+              </div>
+              <h3 className="text-xl font-bold text-foreground mb-2">WhatsApp</h3>
+              <p className="text-muted-foreground text-sm mb-5 leading-relaxed">
+                Najbrže odgovorimo. Pošaljite nam poruku i dobit ćete ponudu.
+              </p>
+              <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#25D366] text-white font-bold text-sm transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#25D366]/30">
+                <MessageCircle className="h-4 w-4" />
+                Pišite nam odmah
+              </span>
+            </motion.a>
+          </div>
 
-          </motion.a>
-
-          <motion.a
-            href={PHONE_HREF}
-            className="group flex flex-col items-center text-center p-8 rounded-2xl border border-border bg-card transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary/25"
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+          {/* Phone card — mobile: scroll-reveal with 150ms stagger */}
+          <div
+            ref={phoneRef}
+            className={`will-change-transform transition-[opacity,transform] duration-500 ease-out ${
+              phoneVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-[40px]"
+            }`}
           >
-            <div className="mb-5 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary text-white shadow-lg shadow-primary/25 transition-transform duration-300 group-hover:scale-110">
-              <Phone className="h-7 w-7" />
-            </div>
-            <h3 className="text-xl font-bold text-foreground mb-2">Nazovite odmah</h3>
-            <p className="text-muted-foreground text-sm mb-5 leading-relaxed">
-              Razgovarajte izravno s našim timom za brzu pomoć i besplatnu procjenu.
-            </p>
-            <span className="text-l font-extrabold text-foreground tracking-tight">Pon — Ned · 08:00 – 20:00</span>
-          </motion.a>
+            <motion.a
+              href={PHONE_HREF}
+              className="group flex flex-col items-center text-center p-8 rounded-2xl border border-border bg-card transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary/25"
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <div className="mb-5 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary text-white shadow-lg shadow-primary/25 transition-transform duration-300 group-hover:scale-110">
+                <Phone className="h-7 w-7" />
+              </div>
+              <h3 className="text-xl font-bold text-foreground mb-2">Nazovite odmah</h3>
+              <p className="text-muted-foreground text-sm mb-5 leading-relaxed">
+                Razgovarajte izravno s našim timom za brzu pomoć i besplatnu procjenu.
+              </p>
+              <span className="text-l font-extrabold text-foreground tracking-tight">
+                Pon — Ned · 08:00 – 20:00
+              </span>
+            </motion.a>
+          </div>
 
           <motion.div
             className="p-8 rounded-2xl border border-border bg-card"
