@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import kombiImg from "../../slike/kombi.jpeg";
 
 const HeroSection = () => {
   return (
@@ -23,7 +24,7 @@ const HeroSection = () => {
           className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] text-foreground"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
+          transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
         >
           Sigurne selidbe.
           <br />
@@ -67,6 +68,19 @@ const HeroSection = () => {
               Nazovite odmah
             </a>
           </Button>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
+          className="mt-16"
+        >
+          <img
+            src={kombiImg}
+            alt="Kinesis Transport kombi"
+            className="mx-auto rounded-3xl shadow-2xl border border-border w-full max-w-3xl h-auto md:max-h-[500px] object-cover"
+          />
         </motion.div>
       </div>
 
