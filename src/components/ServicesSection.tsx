@@ -1,28 +1,35 @@
 import { motion } from "framer-motion";
-import { Truck, Home, Building2, ArrowRight } from "lucide-react";
+import { Truck, Home, Package, MoreHorizontal, ArrowRight } from "lucide-react";
 import { scrollToSection } from "@/lib/scroll";
 
 const services = [
   {
+    icon: Home,
+    title: "Selidbe",
+    benefit: "Stan, kuća, poslovni prostor",
+    description:
+      "Selidbe stanova, kuća i manjih poslovnih prostora. Pomažemo kod utovara i istovara te pazimo na sigurnost vaših stvari.",
+  },
+  {
     icon: Truck,
     title: "Dostava namještaja",
-    benefit: "Iz trgovine do praga u jedan dan",
+    benefit: "Iz trgovine do vašeg doma",
     description:
-      "Profesionalno rukovanje i prijevoz namještaja. Svaki komad pažljivo zaštićen i dostavljen bez ogrebotina.",
+      "Preuzimanje iz trgovine ili skladišta i dostava na vašu adresu. Po dogovoru unos u stan ili kuću.",
   },
   {
-    icon: Home,
-    title: "Selidbe kućanstava",
-    benefit: "Cijela selidba — jedan poziv",
+    icon: Package,
+    title: "Prijevoz pošiljki",
+    benefit: "Grad i okolica",
     description:
-      "Od stručnog pakiranja do preciznog postavljanja na novoj adresi. Preseljenje bez stresa i gužve.",
+      "Brzi prijevoz paketa, robe i opreme na području grada i okolice.",
   },
   {
-    icon: Building2,
-    title: "B2B Logistika",
-    benefit: "Minimalni zastoj u poslovanju",
+    icon: MoreHorizontal,
+    title: "Ostalo",
+    benefit: "Po dogovoru",
     description:
-      "Pouzdana i prilagođena transportna rješenja za tvrtke svih veličina. Diskretno, brzo, bez iznenađenja.",
+      "Prijevoz pića, građevinskog materijala i sličnih stvari prema dogovoru.",
   },
 ];
 
@@ -45,11 +52,11 @@ const ServicesSection = () => {
             Što možemo učiniti za vas
           </h2>
           <p className="mt-4 text-muted-foreground max-w-xl mx-auto text-sm md:text-base">
-            Cjelovita logistička rješenja za fizičke osobe i poslovne subjekte.
+            Selidbe, dostava i prijevoz — sve po dogovoru i bez komplikacija.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, i) => (
             <motion.div
               key={service.title}
@@ -77,7 +84,7 @@ const ServicesSection = () => {
                 className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-primary group-hover:gap-3 transition-all duration-300"
                 onClick={() => scrollToSection("contact")}
               >
-                Zatražite ponudu
+                Zatraži ponudu
                 <ArrowRight className="h-4 w-4" />
               </button>
             </motion.div>

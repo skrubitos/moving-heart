@@ -49,11 +49,10 @@ const ContactSection = () => {
             Kontaktirajte nas
           </span>
           <h2 className="mt-3 text-3xl md:text-4xl font-extrabold text-foreground">
-            Zatražite besplatnu ponudu
+            Trebate selidbu ili prijevoz?
           </h2>
           <p className="mt-4 text-muted-foreground max-w-xl mx-auto text-sm md:text-base">
-            Odaberite najlakši način za kontakt. Bez obaveza — samo recite što trebate
-            i mi se brinemo za sve ostalo.
+            Javite nam se za ponudu — odgovaramo brzo.
           </p>
         </motion.div>
 

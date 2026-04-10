@@ -1,27 +1,14 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Phone, CheckCircle2, MessageCircle, ShieldCheck, Star, Clock } from "lucide-react";
+import { ArrowRight, Phone, CheckCircle2, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PHONE_HREF, WHATSAPP_URL } from "@/lib/contact";
 import { scrollToSection } from "@/lib/scroll";
 import kombiLogoImg from "../../slike/kombi logo.jpeg";
 
 const trustBullets = [
-  "Potpuno osiguranje tereta uključeno u cijenu",
-  "Besplatna procjena ",
-  "Jamstvo točnosti ",
-
-];
-
-const stats = [
-  { value: "500+", label: "Uspješnih selidbi" },
-  { value: "98%", label: "Zadovoljnih klijenata" },
-  { value: "5+", label: "Godina iskustva" },
-];
-
-const panelFeatures = [
-  { icon: ShieldCheck, label: "Osiguranje uključeno u cijenu", sub: "Bez doplate — potpuna zaštita" },
-  { icon: Star, label: "Ocjena zadovoljstva 4.9 / 5", sub: "Na temelju 200+ recenzija" },
-  { icon: Clock, label: "Dostupni 7 dana u tjednu", sub: "Odgovaramo u roku od 30 min" },
+  "Besplatna procjena",
+  "Pažljivo rukovanje stvarima",
+  "Korektne cijene bez skrivenih troškova",
 ];
 
 const HeroSection = () => {
@@ -50,11 +37,9 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.1 }}
             >
-              Selidba bez
+              Selidbe i dostava
               <br />
-              stresa i brige.
-              <br />
-              <span className="text-primary">Garantirano.</span>
+              <span className="text-primary">bez komplikacija</span>
             </motion.h1>
 
             <motion.p
@@ -63,8 +48,8 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.22 }}
             >
-              Profesionalni tim za selidbe stanova, kuća i ureda. Vaš teret je potpuno
-              osiguran — mi se brinemo za sve, vi se samo uselijavate.
+              Nova smo firma iz Splita koja nudi brze i pouzdane usluge selidbi,
+              dostave namještaja i prijevoza pošiljki.
             </motion.p>
 
             <motion.div
@@ -94,7 +79,7 @@ const HeroSection = () => {
                 className="group px-8 py-6 text-base font-bold rounded-xl shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 hover:scale-[1.02]"
                 onClick={() => scrollToSection("contact")}
               >
-                Zatražite besplatnu ponudu
+                Zatraži ponudu
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
 
@@ -114,34 +99,20 @@ const HeroSection = () => {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="flex-1 sm:flex-none lg:hidden px-6 py-6 text-base font-semibold rounded-xl border-[#25D366]/40 text-[#25D366] hover:bg-[#25D366]/5 transition-all duration-300"
+                  className="px-5 py-6 rounded-xl border-[#25D366]/40 text-[#25D366] hover:bg-[#25D366]/5 transition-all duration-300"
                   asChild
+                  title="Pišite nam na WhatsApp"
                 >
                   <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-                    <MessageCircle className="mr-2 h-4 w-4" />
-                    WhatsApp
+                    <MessageCircle className="h-5 w-5" />
                   </a>
                 </Button>
               </div>
             </motion.div>
-
-            <motion.div
-              className="mt-12 flex items-center gap-10 pt-8 border-t border-border"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.7, delay: 0.58 }}
-            >
-              {stats.map((stat) => (
-                <div key={stat.label}>
-                  <div className="text-2xl font-extrabold text-foreground tabular-nums">{stat.value}</div>
-                  <div className="text-xs text-muted-foreground mt-0.5 leading-snug">{stat.label}</div>
-                </div>
-              ))}
-            </motion.div>
           </div>
 
           <motion.div
-            className="hidden lg:flex flex-col gap-4"
+            className="flex flex-col gap-4"
             initial={{ opacity: 0, x: 36 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.75, delay: 0.28 }}
@@ -149,40 +120,12 @@ const HeroSection = () => {
             <div className="rounded-3xl overflow-hidden border border-border shadow-2xl bg-white">
               <img
                 src={kombiLogoImg}
-                alt="Kinesis Transport vozilo"
+                alt="Moving Heart vozilo"
                 className="w-full h-auto object-contain"
               />
               <div className="px-6 py-3.5 bg-secondary/60 border-t border-border flex items-center gap-2.5">
                 <span className="w-2 h-2 rounded-full bg-green-500 flex-shrink-0" />
-                <span className="text-xs font-semibold text-foreground">Kinesis Transport d.o.o.</span>
-                <span className="text-xs text-muted-foreground ml-auto">Reg. ST-KT001</span>
-              </div>
-            </div>
-
-            <div className="relative bg-accent rounded-2xl p-7 overflow-hidden">
-              <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:1.5rem_1.5rem]" />
-              <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-primary/15 blur-3xl pointer-events-none" />
-              <div className="relative z-10 space-y-3">
-                {panelFeatures.map((item) => (
-                  <div key={item.label} className="flex items-center gap-4 p-3.5 rounded-xl bg-white/5 border border-white/10">
-                    <div className="w-9 h-9 rounded-lg bg-primary/25 flex items-center justify-center flex-shrink-0">
-                      <item.icon className="h-4 w-4 text-primary" />
-                    </div>
-                    <div>
-                      <div className="text-sm font-semibold text-white leading-snug">{item.label}</div>
-                      <div className="text-xs text-white/50 mt-0.5">{item.sub}</div>
-                    </div>
-                  </div>
-                ))}
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-1 flex items-center justify-center gap-3 w-full py-3.5 rounded-xl font-bold text-sm text-white bg-[#25D366] hover:bg-[#1fba59] transition-all duration-300 hover:shadow-lg"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  Pišite nam na WhatsApp
-                </a>
+                <span className="text-xs font-semibold text-foreground">Moving Heart</span>
               </div>
             </div>
           </motion.div>
