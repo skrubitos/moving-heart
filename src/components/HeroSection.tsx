@@ -48,7 +48,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.22 }}
             >
-              Nova smo firma iz Splita koja nudi brze i pouzdane usluge selidbi,
+              Nova firma iz Splita koja nudi brze i pouzdane usluge selidbi,
               dostave namještaja i prijevoza pošiljki.
             </motion.p>
 
@@ -125,7 +125,7 @@ const HeroSection = () => {
               />
               <div className="px-6 py-3.5 bg-secondary/60 border-t border-border flex items-center gap-2.5">
                 <span className="w-2 h-2 rounded-full bg-green-500 flex-shrink-0" />
-                <span className="text-xs font-semibold text-foreground">Moving Heart</span>
+                <span className="text-xs font-semibold text-foreground">Dostavno vozilo</span>
               </div>
             </div>
           </motion.div>

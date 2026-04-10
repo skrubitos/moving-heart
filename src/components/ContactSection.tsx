@@ -76,12 +76,9 @@ const ContactSection = () => {
             </div>
             <h3 className="text-xl font-bold text-foreground mb-2">WhatsApp</h3>
             <p className="text-muted-foreground text-sm mb-5 leading-relaxed">
-              Najbrži odgovor. Pošaljite nam poruku i dobit ćete ponudu u roku od par minuta.
+              Najbrže odgovorimo. Pošaljite nam poruku i dobit ćete ponudu.
             </p>
-            <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#25D366] text-white font-bold text-sm transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#25D366]/30">
-              <MessageCircle className="h-4 w-4" />
-              Pišite nam odmah
-            </span>
+
           </motion.a>
 
           <motion.a
@@ -99,8 +96,7 @@ const ContactSection = () => {
             <p className="text-muted-foreground text-sm mb-5 leading-relaxed">
               Razgovarajte izravno s našim timom za brzu pomoć i besplatnu procjenu.
             </p>
-            <span className="text-xl font-extrabold text-foreground tracking-tight">{PHONE_DISPLAY}</span>
-            <span className="mt-1.5 text-xs text-muted-foreground">Pon — Ned · 08:00 – 20:00</span>
+            <span className="text-l font-extrabold text-foreground tracking-tight">Pon — Ned · 08:00 – 20:00</span>
           </motion.a>
 
           <motion.div
