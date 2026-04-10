@@ -11,7 +11,7 @@ const Index = () => {
       <Navbar />
       <HeroSection />
       <ServicesSection />
-      <div id="trust">
+      <div id="trust" className="scroll-mt-20">
         <TrustSection />
       </div>
       <ContactSection />

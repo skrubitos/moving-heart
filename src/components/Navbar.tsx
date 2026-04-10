@@ -14,8 +14,11 @@ const Navbar = () => {
   const scrollTo = (id: string) => {
     const element = document.querySelector(id);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
       setOpen(false);
+      // Kratka odgoda omogućuje izborniku da krene u zatvaranje prije nego krene skrolanje
+      setTimeout(() => {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 10);
     }
   };
 
