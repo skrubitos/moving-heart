@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Truck, Home, Package, MoreHorizontal, ArrowRight } from "lucide-react";
 import { scrollToSection } from "@/lib/scroll";
 
@@ -33,6 +34,135 @@ const services = [
   },
 ];
 
+const ServiceCard = ({ service }: { service: typeof services[number] }) => (
+  <div className="group relative bg-card border border-border rounded-2xl p-8 flex flex-col h-full transition-all duration-300 hover:shadow-xl hover:border-primary/25 overflow-hidden">
+    <div className="absolute left-0 top-6 bottom-6 w-1 rounded-r-full bg-primary scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-center" />
+
+    <div className="mb-6 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white group-hover:shadow-lg group-hover:shadow-primary/25">
+      <service.icon className="h-6 w-6" />
+    </div>
+
+    <span className="mb-3 self-start text-[11px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-primary/8 text-primary border border-primary/15">
+      {service.benefit}
+    </span>
+
+    <h3 className="text-xl font-bold text-foreground mb-2">{service.title}</h3>
+    <p className="text-sm text-muted-foreground leading-relaxed flex-1">{service.description}</p>
+
+    <button
+      type="button"
+      className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-primary group-hover:gap-3 transition-all duration-300"
+      onClick={() => scrollToSection("contact")}
+    >
+      Zatraži ponudu
+      <ArrowRight className="h-4 w-4" />
+    </button>
+  </div>
+);
+
+const AUTOPLAY_INTERVAL = 4000;
+
+const MobileCarousel = () => {
+  const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const autoplayRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const touchStartX = useRef<number | null>(null);
+  const userSwiped = useRef(false);
+
+  const goTo = (index: number, dir: number) => {
+    setDirection(dir);
+    setCurrent(index);
+  };
+
+  const next = (byUser = false) => {
+    if (byUser) userSwiped.current = true;
+    goTo((current + 1) % services.length, 1);
+  };
+
+  const prev = (byUser = false) => {
+    if (byUser) userSwiped.current = true;
+    goTo((current - 1 + services.length) % services.length, -1);
+  };
+
+  const startAutoplay = () => {
+    if (autoplayRef.current) clearTimeout(autoplayRef.current);
+    autoplayRef.current = setTimeout(() => {
+      if (!userSwiped.current) {
+        setDirection(1);
+        setCurrent((c) => (c + 1) % services.length);
+      }
+      userSwiped.current = false;
+      startAutoplay();
+    }, AUTOPLAY_INTERVAL);
+  };
+
+  useEffect(() => {
+    startAutoplay();
+    return () => {
+      if (autoplayRef.current) clearTimeout(autoplayRef.current);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [current]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) {
+      diff > 0 ? next(true) : prev(true);
+    }
+    touchStartX.current = null;
+  };
+
+  const variants = {
+    enter: (dir: number) => ({ x: dir > 0 ? "100%" : "-100%", opacity: 0 }),
+    center: { x: 0, opacity: 1 },
+    exit: (dir: number) => ({ x: dir > 0 ? "-100%" : "100%", opacity: 0 }),
+  };
+
+  return (
+    <div className="sm:hidden">
+      <div
+        className="relative overflow-hidden"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
+        <AnimatePresence mode="wait" custom={direction}>
+          <motion.div
+            key={current}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.35, ease: "easeInOut" }}
+          >
+            <ServiceCard service={services[current]} />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Dots */}
+      <div className="flex justify-center gap-2 mt-5">
+        {services.map((_, i) => (
+          <button
+            key={i}
+            type="button"
+            aria-label={`Kartica ${i + 1}`}
+            onClick={() => { goTo(i, i > current ? 1 : -1); userSwiped.current = true; }}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              i === current ? "w-6 bg-primary" : "w-2 bg-border hover:bg-primary/40"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const ServicesSection = () => {
   return (
     <section id="services" className="py-24 md:py-32 bg-secondary/50 scroll-mt-20">
@@ -56,7 +186,11 @@ const ServicesSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Mobile carousel */}
+        <MobileCarousel />
+
+        {/* Desktop / tablet grid */}
+        <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, i) => (
             <motion.div
               key={service.title}
@@ -64,29 +198,8 @@ const ServicesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.55, delay: i * 0.12, ease: "easeOut" }}
-              className="group relative bg-card border border-border rounded-2xl p-8 flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary/25 overflow-hidden"
             >
-              <div className="absolute left-0 top-6 bottom-6 w-1 rounded-r-full bg-primary scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-center" />
-
-              <div className="mb-6 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white group-hover:shadow-lg group-hover:shadow-primary/25">
-                <service.icon className="h-6 w-6" />
-              </div>
-
-              <span className="mb-3 self-start text-[11px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-primary/8 text-primary border border-primary/15">
-                {service.benefit}
-              </span>
-
-              <h3 className="text-xl font-bold text-foreground mb-2">{service.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed flex-1">{service.description}</p>
-
-              <button
-                type="button"
-                className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-primary group-hover:gap-3 transition-all duration-300"
-                onClick={() => scrollToSection("contact")}
-              >
-                Zatraži ponudu
-                <ArrowRight className="h-4 w-4" />
-              </button>
+              <ServiceCard service={service} />
             </motion.div>
           ))}
         </div>
