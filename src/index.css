@@ -4,6 +4,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes gradient-pulse {
+  0%, 100% { filter: hue-rotate(0deg) brightness(1); }
+  50%       { filter: hue-rotate(18deg) brightness(1.08); }
+}
+
+.text-gradient-animated {
+  background: linear-gradient(90deg, #f97316, #fbbf24);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: gradient-pulse 3.5s ease-in-out infinite;
+  will-change: filter;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

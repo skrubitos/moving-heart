@@ -42,7 +42,7 @@ const HeroSection = () => {
             >
               {t("hero.title1")}
               <br />
-              <span className="text-primary">{t("hero.title2")}</span>
+              <span className="text-gradient-animated">{t("hero.title2")}</span>
             </motion.h1>
 
             <motion.p
