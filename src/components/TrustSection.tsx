@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { ShieldCheck, Clock, Banknote, Heart, User } from "lucide-react";
+import { ShieldCheck, Clock, Banknote, Heart, User, ChevronDown } from "lucide-react";
 import kombiImg from "../../slike/kombi.jpeg";
 
 const trustPoints = [
@@ -30,7 +31,58 @@ const trustPoints = [
   },
 ];
 
+const AccordionItem = ({
+  point,
+  isOpen,
+  onToggle,
+}: {
+  point: (typeof trustPoints)[number];
+  isOpen: boolean;
+  onToggle: () => void;
+}) => (
+  <div className="border border-border rounded-2xl bg-card overflow-hidden">
+    <button
+      type="button"
+      className="w-full flex items-center gap-4 px-5 py-4 text-left"
+      onClick={onToggle}
+
+    >
+      <div
+        className={`inline-flex items-center justify-center w-10 h-10 rounded-full border-2 flex-shrink-0 transition-colors duration-300 ${
+          isOpen
+            ? "border-primary/30 bg-primary/5 text-primary"
+            : "border-border text-muted-foreground"
+        }`}
+      >
+        <point.icon className="h-5 w-5" />
+      </div>
+      <span className="flex-1 text-sm font-bold text-foreground">{point.title}</span>
+      <ChevronDown
+        className={`h-4 w-4 flex-shrink-0 text-muted-foreground transition-transform duration-300 ${
+          isOpen ? "rotate-180" : ""
+        }`}
+      />
+    </button>
+
+    <div
+      className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${
+        isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+      }`}
+    >
+      <div className="overflow-hidden">
+        <p className="px-5 pb-4 text-xs text-muted-foreground leading-relaxed">
+          {point.description}
+        </p>
+      </div>
+    </div>
+  </div>
+);
+
 const TrustSection = () => {
+  const [openIndex, setOpenIndex] = useState(0);
+
+  const toggle = (i: number) => setOpenIndex((prev) => (prev === i ? -1 : i));
+
   return (
     <section className="py-24 md:py-32 bg-background">
       <div className="max-w-7xl mx-auto px-6">
@@ -89,7 +141,20 @@ const TrustSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        {/* Mobile accordion */}
+        <div className="sm:hidden space-y-2">
+          {trustPoints.map((point, i) => (
+            <AccordionItem
+              key={point.title}
+              point={point}
+              isOpen={openIndex === i}
+              onToggle={() => toggle(i)}
+            />
+          ))}
+        </div>
+
+        {/* Desktop grid */}
+        <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
           {trustPoints.map((point, i) => (
             <motion.div
               key={point.title}
