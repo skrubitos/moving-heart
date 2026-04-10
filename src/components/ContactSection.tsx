@@ -1,32 +1,25 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Phone, MessageCircle, Send, Zap } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { PHONE_DISPLAY, PHONE_HREF, WHATSAPP_URL } from "@/lib/contact";
 
-/**
- * Returns [ref, visible].
- * On mobile (< 640px): starts hidden, reveals via IntersectionObserver after `delay` ms.
- * On desktop: starts already visible so existing layout is unchanged.
- */
 const useScrollReveal = (delay = 0) => {
   const isMobileAtInit =
     typeof window !== "undefined"
       ? window.matchMedia("(max-width: 639px)").matches
       : false;
-
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(!isMobileAtInit);
 
   useEffect(() => {
     const el = ref.current;
     if (!el || !window.matchMedia("(max-width: 639px)").matches) return;
-
     let timer: ReturnType<typeof setTimeout>;
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -36,12 +29,8 @@ const useScrollReveal = (delay = 0) => {
       },
       { threshold: 0.15 },
     );
-
     observer.observe(el);
-    return () => {
-      observer.disconnect();
-      clearTimeout(timer);
-    };
+    return () => { observer.disconnect(); clearTimeout(timer); };
   }, [delay]);
 
   return [ref, visible] as const;
@@ -49,18 +38,15 @@ const useScrollReveal = (delay = 0) => {
 
 const ContactSection = () => {
   const { toast } = useToast();
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({ name: "", phone: "", message: "" });
-
   const [whatsappRef, whatsappVisible] = useScrollReveal(0);
   const [phoneRef, phoneVisible] = useScrollReveal(150);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.phone.trim()) return;
-    toast({
-      title: "Upit poslan!",
-      description: "Javit ćemo vam se u najkraćem mogućem roku.",
-    });
+    toast({ title: t("contact.toastTitle"), description: t("contact.toastDesc") });
     setFormData({ name: "", phone: "", message: "" });
   };
 
@@ -76,9 +62,7 @@ const ContactSection = () => {
           transition={{ duration: 0.5 }}
         >
           <Zap className="h-4 w-4 text-primary flex-shrink-0" />
-          <span className="text-sm font-semibold text-primary">
-            Odgovaramo u roku od 30 minuta tijekom radnog vremena
-          </span>
+          <span className="text-sm font-semibold text-primary">{t("contact.badge")}</span>
         </motion.div>
 
         <motion.div
@@ -89,25 +73,22 @@ const ContactSection = () => {
           transition={{ duration: 0.6 }}
         >
           <span className="text-xs font-semibold tracking-widest uppercase text-primary">
-            Kontaktirajte nas
+            {t("contact.sectionBadge")}
           </span>
           <h2 className="mt-3 text-3xl md:text-4xl font-extrabold text-foreground">
-            Trebate selidbu ili prijevoz?
+            {t("contact.title")}
           </h2>
           <p className="mt-4 text-muted-foreground max-w-xl mx-auto text-sm md:text-base">
-            Javite nam se za ponudu — odgovaramo brzo.
+            {t("contact.subtitle")}
           </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-6">
 
-          {/* WhatsApp card — mobile: scroll-reveal via IntersectionObserver */}
           <div
             ref={whatsappRef}
             className={`will-change-transform transition-[opacity,transform] duration-500 ease-out ${
-              whatsappVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-[40px]"
+              whatsappVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-[40px]"
             }`}
           >
             <motion.a
@@ -121,29 +102,26 @@ const ContactSection = () => {
               transition={{ duration: 0.5 }}
             >
               <span className="absolute top-4 right-4 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#25D366]/10 text-[#25D366] border border-[#25D366]/20">
-                Preporučeno
+                {t("contact.recommended")}
               </span>
               <div className="mb-5 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#25D366] text-white shadow-lg shadow-[#25D366]/30 transition-transform duration-300 group-hover:scale-110">
                 <MessageCircle className="h-7 w-7" />
               </div>
               <h3 className="text-xl font-bold text-foreground mb-2">WhatsApp</h3>
               <p className="text-muted-foreground text-sm mb-5 leading-relaxed">
-                Najbrže odgovorimo. Pošaljite nam poruku i dobit ćete ponudu.
+                {t("contact.whatsappDesc")}
               </p>
               <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#25D366] text-white font-bold text-sm transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#25D366]/30">
                 <MessageCircle className="h-4 w-4" />
-                Pišite nam odmah
+                {t("contact.whatsappCta")}
               </span>
             </motion.a>
           </div>
 
-          {/* Phone card — mobile: scroll-reveal with 150ms stagger */}
           <div
             ref={phoneRef}
             className={`will-change-transform transition-[opacity,transform] duration-500 ease-out ${
-              phoneVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-[40px]"
+              phoneVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-[40px]"
             }`}
           >
             <motion.a
@@ -157,13 +135,14 @@ const ContactSection = () => {
               <div className="mb-5 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary text-white shadow-lg shadow-primary/25 transition-transform duration-300 group-hover:scale-110">
                 <Phone className="h-7 w-7" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">Nazovite odmah</h3>
+              <h3 className="text-xl font-bold text-foreground mb-2">{t("contact.phoneTitle")}</h3>
               <p className="text-muted-foreground text-sm mb-5 leading-relaxed">
-                Razgovarajte izravno s našim timom za brzu pomoć i besplatnu procjenu.
+                {t("contact.phoneDesc")}
               </p>
               <span className="text-l font-extrabold text-foreground tracking-tight">
-                Pon — Ned · 08:00 – 20:00
+                {PHONE_DISPLAY}
               </span>
+              <span className="mt-1.5 text-xs text-muted-foreground">{t("contact.hours")}</span>
             </motion.a>
           </div>
 
@@ -174,11 +153,11 @@ const ContactSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h3 className="text-xl font-bold text-foreground mb-1">Pošaljite upit</h3>
-            <p className="text-xs text-muted-foreground mb-6">Odgovorimo u roku od 30 minuta.</p>
+            <h3 className="text-xl font-bold text-foreground mb-1">{t("contact.formTitle")}</h3>
+            <p className="text-xs text-muted-foreground mb-6">{t("contact.formDesc")}</p>
             <form onSubmit={handleSubmit} className="space-y-3">
               <Input
-                placeholder="Vaše ime *"
+                placeholder={t("contact.namePlaceholder")}
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 maxLength={100}
@@ -186,7 +165,7 @@ const ContactSection = () => {
                 className="rounded-xl"
               />
               <Input
-                placeholder="Broj telefona *"
+                placeholder={t("contact.phonePlaceholder")}
                 type="tel"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -195,7 +174,7 @@ const ContactSection = () => {
                 className="rounded-xl"
               />
               <Textarea
-                placeholder="Opišite što trebate prevesti..."
+                placeholder={t("contact.messagePlaceholder")}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 maxLength={1000}
@@ -207,7 +186,7 @@ const ContactSection = () => {
                 className="w-full rounded-xl py-5 font-bold shadow-md shadow-primary/20 transition-all duration-300 hover:scale-[1.02]"
               >
                 <Send className="mr-2 h-4 w-4" />
-                Pošalji besplatni upit
+                {t("contact.submit")}
               </Button>
             </form>
           </motion.div>

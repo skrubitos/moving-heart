@@ -1,17 +1,20 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Phone, CheckCircle2, MessageCircle } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { PHONE_HREF, WHATSAPP_URL } from "@/lib/contact";
 import { scrollToSection } from "@/lib/scroll";
 import kombiLogoImg from "../../slike/kombi logo.jpeg";
 
-const trustBullets = [
-  "Besplatna procjena",
-  "Pažljivo rukovanje stvarima",
-  "Korektne cijene bez skrivenih troškova",
-];
-
 const HeroSection = () => {
+  const { t } = useTranslation();
+
+  const trustBullets = [
+    t("hero.bullet1"),
+    t("hero.bullet2"),
+    t("hero.bullet3"),
+  ];
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-50" />
@@ -28,7 +31,7 @@ const HeroSection = () => {
               transition={{ duration: 0.55 }}
             >
               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              Split i okolica · Dostupni 7 dana
+              {t("hero.badge")}
             </motion.span>
 
             <motion.h1
@@ -37,9 +40,9 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.1 }}
             >
-              Selidbe i dostava
+              {t("hero.title1")}
               <br />
-              <span className="text-primary">bez komplikacija</span>
+              <span className="text-primary">{t("hero.title2")}</span>
             </motion.h1>
 
             <motion.p
@@ -48,8 +51,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.22 }}
             >
-              Nova firma iz Splita koja nudi brze i pouzdane usluge selidbi,
-              dostave namještaja i prijevoza pošiljki.
+              {t("hero.subtitle")}
             </motion.p>
 
             <motion.div
@@ -79,7 +81,7 @@ const HeroSection = () => {
                 className="group px-8 py-6 text-base font-bold rounded-xl shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 hover:scale-[1.02]"
                 onClick={() => scrollToSection("contact")}
               >
-                Zatraži ponudu
+                {t("hero.ctaPrimary")}
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
 
@@ -92,7 +94,7 @@ const HeroSection = () => {
                 >
                   <a href={PHONE_HREF}>
                     <Phone className="mr-2 h-4 w-4" />
-                    Nazovite
+                    {t("hero.ctaPhone")}
                   </a>
                 </Button>
 
@@ -101,9 +103,8 @@ const HeroSection = () => {
                   size="lg"
                   className="px-5 py-6 rounded-xl border-[#25D366]/40 text-[#25D366] hover:bg-[#25D366]/5 transition-all duration-300"
                   asChild
-                  title="Pišite nam na WhatsApp"
                 >
-                  <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                  <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
                     <MessageCircle className="h-5 w-5" />
                   </a>
                 </Button>
@@ -125,7 +126,7 @@ const HeroSection = () => {
               />
               <div className="px-6 py-3.5 bg-secondary/60 border-t border-border flex items-center gap-2.5">
                 <span className="w-2 h-2 rounded-full bg-green-500 flex-shrink-0" />
-                <span className="text-xs font-semibold text-foreground">Dostavno vozilo</span>
+                <span className="text-xs font-semibold text-foreground">{t("hero.vehicleLabel")}</span>
               </div>
             </div>
           </motion.div>

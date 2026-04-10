@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Truck } from "lucide-react";
-
-const links = [
-  { label: "Usluge", href: "#services" },
-  { label: "Zašto mi", href: "#trust" },
-  { label: "Kontakt", href: "#contact" },
-];
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
+
+  const links = [
+    { label: t("nav.services"), href: "#services" },
+    { label: t("nav.whyUs"), href: "#trust" },
+    { label: t("nav.contact"), href: "#contact" },
+  ];
 
   const scrollTo = (id: string) => {
     const element = document.querySelector(id);
@@ -31,11 +34,11 @@ const Navbar = () => {
             <Truck className="h-4 w-4 text-white" />
           </div>
           <span className="text-lg font-bold tracking-tight text-foreground">
-            Kinesis<span className="text-muted-foreground font-normal ml-0.5">Transport</span>
+            Moving<span className="text-muted-foreground font-normal ml-0.5">Heart</span>
           </span>
         </a>
 
-        {/* Desktop links */}
+        {/* Desktop links + switcher + CTA */}
         <div className="hidden md:flex items-center gap-8">
           {links.map((l) => (
             <button type="button"
@@ -46,11 +49,14 @@ const Navbar = () => {
               {l.label}
             </button>
           ))}
+
+          <LanguageSwitcher />
+
           <button type="button"
             onClick={() => scrollTo("#contact")}
             className="text-sm font-bold px-5 py-2.5 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 shadow-sm shadow-primary/20 hover:shadow-primary/30"
           >
-            Zatražite ponudu
+            {t("nav.cta")}
           </button>
         </div>
 
@@ -88,7 +94,7 @@ const Navbar = () => {
                 onClick={() => scrollTo("#contact")}
                 className="mt-2 text-sm font-bold px-5 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors text-center shadow-sm"
               >
-                Zatražite ponudu
+                {t("nav.cta")}
               </button>
             </div>
           </motion.div>

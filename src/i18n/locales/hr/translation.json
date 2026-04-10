@@ -1,0 +1,99 @@
+{
+  "nav": {
+    "services": "Usluge",
+    "whyUs": "Zašto mi",
+    "contact": "Kontakt",
+    "cta": "Zatražite ponudu"
+  },
+  "hero": {
+    "badge": "Split i okolica · Dostupni 7 dana",
+    "title1": "Selidbe i dostava",
+    "title2": "bez komplikacija",
+    "subtitle": "Nova smo firma iz Splita koja nudi brze i pouzdane usluge selidbi, dostave namještaja i prijevoza pošiljki.",
+    "bullet1": "Besplatna procjena",
+    "bullet2": "Pažljivo rukovanje stvarima",
+    "bullet3": "Korektne cijene bez skrivenih troškova",
+    "ctaPrimary": "Zatraži ponudu",
+    "ctaPhone": "Nazovite",
+    "vehicleLabel": "Dostavno vozilo"
+  },
+  "services": {
+    "badge": "Djelatnosti",
+    "title": "Što možemo učiniti za vas",
+    "subtitle": "Selidbe, dostava i prijevoz — sve po dogovoru i bez komplikacija.",
+    "cta": "Zatraži ponudu",
+    "specific": "Trebate nešto specifično?",
+    "adapt": "Prilagođavamo se vašim potrebama.",
+    "contactUs": "Kontaktirajte nas",
+    "items": {
+      "moving": {
+        "title": "Selidbe",
+        "benefit": "Stan, kuća, poslovni prostor",
+        "description": "Selidbe stanova, kuća i manjih poslovnih prostora. Pomažemo kod utovara i istovara te pazimo na sigurnost vaših stvari."
+      },
+      "furniture": {
+        "title": "Dostava namještaja",
+        "benefit": "Iz trgovine do vašeg doma",
+        "description": "Preuzimanje iz trgovine ili skladišta i dostava na vašu adresu. Po dogovoru unos u stan ili kuću."
+      },
+      "parcels": {
+        "title": "Prijevoz pošiljki",
+        "benefit": "Grad i okolica",
+        "description": "Brzi prijevoz paketa, robe i opreme na području grada i okolice."
+      },
+      "other": {
+        "title": "Ostalo",
+        "benefit": "Po dogovoru",
+        "description": "Prijevoz pića, građevinskog materijala i sličnih stvari prema dogovoru."
+      }
+    }
+  },
+  "trust": {
+    "aboutBadge": "O nama",
+    "aboutTitle": "Tko smo mi",
+    "aboutText1": "Mi smo nova firma specijalizirana za selidbe i prijevoz. Fokus nam je na jednostavnom dogovoru, dolasku na vrijeme i pažljivom rukovanju stvarima.",
+    "aboutText2": "Iako smo tek krenuli, svaki posao odrađujemo maksimalno profesionalno jer nam je cilj dugoročno zadovoljstvo klijenata.",
+    "whyBadge": "Zašto odabrati nas",
+    "whyTitle": "Kako radimo",
+    "whySubtitle": "Jednostavan dogovor, transparentne cijene i pažljivo rukovanje — to je naš način rada.",
+    "points": {
+      "fast": { "title": "Brz i jednostavan dogovor", "description": "Javite nam se, dogovorimo termin i dolazimo na vrijeme." },
+      "flexible": { "title": "Fleksibilni termini", "description": "Radimo 7 dana u tjednu i prilagođavamo se vašem rasporedu." },
+      "fair": { "title": "Korektne cijene", "description": "Bez skrivenih troškova — cijena je ono što se dogovorimo." },
+      "careful": { "title": "Pažljivo rukovanje stvarima", "description": "Svaki predmet tretiramo s pažnjom kao da je naš vlastiti." },
+      "individual": { "title": "Individualan pristup", "description": "Svaki posao je drugačiji — prilagođavamo se vašim potrebama." }
+    }
+  },
+  "contact": {
+    "badge": "Odgovaramo u roku od 30 minuta tijekom radnog vremena",
+    "sectionBadge": "Kontaktirajte nas",
+    "title": "Trebate selidbu ili prijevoz?",
+    "subtitle": "Javite nam se za ponudu — odgovaramo brzo.",
+    "recommended": "Preporučeno",
+    "whatsappDesc": "Najbrže odgovorimo. Pošaljite nam poruku i dobit ćete ponudu.",
+    "whatsappCta": "Pišite nam odmah",
+    "phoneTitle": "Nazovite odmah",
+    "phoneDesc": "Razgovarajte izravno s našim timom za brzu pomoć i besplatnu procjenu.",
+    "hours": "Pon — Ned · 08:00 – 20:00",
+    "formTitle": "Pošaljite upit",
+    "formDesc": "Odgovorimo u roku od 30 minuta.",
+    "namePlaceholder": "Vaše ime *",
+    "phonePlaceholder": "Broj telefona *",
+    "messagePlaceholder": "Opišite što trebate prevesti...",
+    "submit": "Pošalji besplatni upit",
+    "toastTitle": "Upit poslan!",
+    "toastDesc": "Javit ćemo vam se u najkraćem mogućem roku."
+  },
+  "footer": {
+    "desc": "Profesionalne usluge prijevoza namještaja i selidbe. Fokus na jednostavnom dogovoru i pažljivom rukovanju.",
+    "quickLinks": "Brzi linkovi",
+    "contact": "Kontakt",
+    "copyright": "Sva prava pridržana."
+  },
+  "bottomNav": {
+    "home": "Početna",
+    "services": "Usluge",
+    "whyUs": "Zašto mi",
+    "quote": "Ponuda"
+  }
+}

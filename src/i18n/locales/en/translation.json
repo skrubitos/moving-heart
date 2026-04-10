@@ -1,0 +1,99 @@
+{
+  "nav": {
+    "services": "Services",
+    "whyUs": "Why Us",
+    "contact": "Contact",
+    "cta": "Get a Quote"
+  },
+  "hero": {
+    "badge": "Split & surroundings · Available 7 days",
+    "title1": "Moving & delivery",
+    "title2": "without complications",
+    "subtitle": "We are a new company from Split offering fast and reliable moving, furniture delivery, and parcel transport services.",
+    "bullet1": "Free estimate",
+    "bullet2": "Careful handling of your belongings",
+    "bullet3": "Fair prices with no hidden costs",
+    "ctaPrimary": "Get a Quote",
+    "ctaPhone": "Call Us",
+    "vehicleLabel": "Delivery vehicle"
+  },
+  "services": {
+    "badge": "Services",
+    "title": "What we can do for you",
+    "subtitle": "Moving, delivery, and transport — all by arrangement, no complications.",
+    "cta": "Get a Quote",
+    "specific": "Need something specific?",
+    "adapt": "We adapt to your needs.",
+    "contactUs": "Contact Us",
+    "items": {
+      "moving": {
+        "title": "Moving",
+        "benefit": "Apartment, house, office",
+        "description": "Moving apartments, houses, and smaller business premises. We help with loading and unloading and take care of the safety of your belongings."
+      },
+      "furniture": {
+        "title": "Furniture Delivery",
+        "benefit": "From store to your home",
+        "description": "Pickup from the store or warehouse and delivery to your address. By arrangement, we can bring items inside your apartment or house."
+      },
+      "parcels": {
+        "title": "Parcel Transport",
+        "benefit": "City & surroundings",
+        "description": "Fast transport of packages, goods, and equipment within the city and surrounding area."
+      },
+      "other": {
+        "title": "Other",
+        "benefit": "By arrangement",
+        "description": "Transport of beverages, building materials, and similar items by arrangement."
+      }
+    }
+  },
+  "trust": {
+    "aboutBadge": "About Us",
+    "aboutTitle": "Who we are",
+    "aboutText1": "We are a new company specialised in moving and transport. Our focus is on simple arrangements, arriving on time, and careful handling of your belongings.",
+    "aboutText2": "Although we are just starting out, we carry out every job with maximum professionalism because our goal is long-term client satisfaction.",
+    "whyBadge": "Why choose us",
+    "whyTitle": "How we work",
+    "whySubtitle": "Simple arrangements, transparent prices, and careful handling — that is our way of working.",
+    "points": {
+      "fast": { "title": "Fast & simple arrangements", "description": "Contact us, we agree on a time, and we arrive on schedule." },
+      "flexible": { "title": "Flexible scheduling", "description": "We work 7 days a week and adapt to your timetable." },
+      "fair": { "title": "Fair prices", "description": "No hidden costs — the price is what we agree on." },
+      "careful": { "title": "Careful handling", "description": "We treat every item with care as if it were our own." },
+      "individual": { "title": "Individual approach", "description": "Every job is different — we adapt to your needs." }
+    }
+  },
+  "contact": {
+    "badge": "We respond within 30 minutes during business hours",
+    "sectionBadge": "Contact us",
+    "title": "Need moving or transport?",
+    "subtitle": "Get in touch for a quote — we respond quickly.",
+    "recommended": "Recommended",
+    "whatsappDesc": "Fastest response. Send us a message and get a quote in minutes.",
+    "whatsappCta": "Message us now",
+    "phoneTitle": "Call us now",
+    "phoneDesc": "Talk directly with our team for quick assistance and a free estimate.",
+    "hours": "Mon — Sun · 08:00 – 20:00",
+    "formTitle": "Send an enquiry",
+    "formDesc": "We respond within 30 minutes.",
+    "namePlaceholder": "Your name *",
+    "phonePlaceholder": "Phone number *",
+    "messagePlaceholder": "Describe what you need transported...",
+    "submit": "Send free enquiry",
+    "toastTitle": "Enquiry sent!",
+    "toastDesc": "We will get back to you as soon as possible."
+  },
+  "footer": {
+    "desc": "Professional furniture transport and moving services. Focus on simple arrangements and careful handling.",
+    "quickLinks": "Quick links",
+    "contact": "Contact",
+    "copyright": "All rights reserved."
+  },
+  "bottomNav": {
+    "home": "Home",
+    "services": "Services",
+    "whyUs": "Why Us",
+    "quote": "Quote"
+  }
+}
