@@ -2,11 +2,16 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Phone, MessageCircle, Send, Zap } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import emailjs from "@emailjs/browser";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { PHONE_DISPLAY, PHONE_HREF, WHATSAPP_URL } from "@/lib/contact";
+
+const EMAILJS_SERVICE_ID = "service_73nbq1k";
+const EMAILJS_TEMPLATE_ID = "template_ff74b8e";
+const EMAILJS_PUBLIC_KEY = "sysll8DVvubfBv9ky";
 
 const useScrollReveal = (delay = 0) => {
   const isMobileAtInit =
@@ -42,12 +47,32 @@ const ContactSection = () => {
   const [formData, setFormData] = useState({ name: "", phone: "", message: "" });
   const [whatsappRef, whatsappVisible] = useScrollReveal(0);
   const [phoneRef, phoneVisible] = useScrollReveal(150);
+  const [sending, setSending] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.phone.trim()) return;
-    toast({ title: t("contact.toastTitle"), description: t("contact.toastDesc") });
-    setFormData({ name: "", phone: "", message: "" });
+
+    setSending(true);
+    emailjs
+      .send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          name: formData.name,
+          phone: formData.phone,
+          message: formData.message,
+        },
+        EMAILJS_PUBLIC_KEY,
+      )
+      .then(() => {
+        toast({ title: t("contact.toastTitle"), description: t("contact.toastDesc") });
+        setFormData({ name: "", phone: "", message: "" });
+      })
+      .catch(() => {
+        toast({ title: "Greška", description: "Slanje nije uspjelo. Pokušajte ponovo." });
+      })
+      .finally(() => setSending(false));
   };
 
   return (
@@ -183,10 +208,11 @@ const ContactSection = () => {
               />
               <Button
                 type="submit"
-                className="w-full rounded-xl py-5 font-bold shadow-md shadow-primary/20 transition-all duration-300 hover:scale-[1.02]"
+                disabled={sending}
+                className="w-full rounded-xl py-5 font-bold shadow-md shadow-primary/20 transition-all duration-300 hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                <Send className="mr-2 h-4 w-4" />
-                {t("contact.submit")}
+                <Send className={`mr-2 h-4 w-4 ${sending ? "animate-pulse" : ""}`} />
+                {sending ? "Slanje..." : t("contact.submit")}
               </Button>
             </form>
           </motion.div>
