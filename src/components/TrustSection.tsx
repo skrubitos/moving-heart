@@ -98,7 +98,7 @@ const TrustSection = () => {
             <div className="rounded-3xl overflow-hidden border border-border shadow-xl">
               <img
                 src={kombiImg}
-                alt="Moving Heart – vozilo"
+                alt="Kinesis Transport – vozilo"
                 className="w-full h-56 md:h-72 object-cover object-center"
               />
             </div>

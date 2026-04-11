@@ -121,7 +121,7 @@ const HeroSection = () => {
             <div className="rounded-3xl overflow-hidden border border-border shadow-2xl bg-white">
               <img
                 src={kombiLogoImg}
-                alt="Moving Heart vozilo"
+                alt="Kinesis Transport vozilo"
                 className="w-full h-auto object-contain"
               />
               <div className="px-6 py-3.5 bg-secondary/60 border-t border-border flex items-center gap-2.5">

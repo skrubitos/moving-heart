@@ -34,7 +34,7 @@ const Navbar = () => {
             <Truck className="h-4 w-4 text-white" />
           </div>
           <span className="text-lg font-bold tracking-tight text-foreground">
-            Moving<span className="text-muted-foreground font-normal ml-0.5">Heart</span>
+            Kinesis<span className="text-muted-foreground font-normal ml-0.5">Transport</span>
           </span>
         </a>
 

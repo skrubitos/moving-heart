@@ -22,7 +22,7 @@ const Footer = () => {
                 <Truck className="h-4 w-4 text-white" />
               </div>
               <h3 className="text-lg font-bold text-white">
-                Moving<span className="font-normal opacity-60 ml-0.5">Heart</span>
+                Kinesis<span className="font-normal opacity-60 ml-0.5">Transport</span>
               </h3>
             </div>
             <p className="text-sm opacity-55 leading-relaxed max-w-xs">
@@ -60,9 +60,9 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="mailto:info@movingheart.hr" className="flex items-center gap-3 text-sm opacity-55 hover:opacity-100 transition-opacity">
+                <a href="mailto:info@kinesistransport.hr" className="flex items-center gap-3 text-sm opacity-55 hover:opacity-100 transition-opacity">
                   <Mail className="h-4 w-4 flex-shrink-0" />
-                  info@movingheart.hr
+                  info@kinesistransport.hr
                 </a>
               </li>
               <li className="flex items-center gap-3 text-sm opacity-55">
@@ -75,7 +75,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs opacity-40">
-          <span>© {new Date().getFullYear()} Moving Heart. {t("footer.copyright")}</span>
+          <span>© {new Date().getFullYear()} Kinesis Transport. {t("footer.copyright")}</span>
           <span>Split, Hrvatska</span>
         </div>
       </div>
