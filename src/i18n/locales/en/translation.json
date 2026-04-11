@@ -86,10 +86,12 @@
     "toastDesc": "We will get back to you as soon as possible."
   },
   "footer": {
-    "desc": "Professional furniture transport and moving services. Focus on simple arrangements and careful handling.",
     "quickLinks": "Quick links",
     "contact": "Contact",
-    "copyright": "All rights reserved."
+    "hours": "Working hours",
+    "hoursValue": "Mon — Sun · 08:00 – 20:00",
+    "city": "Split, Croatia",
+    "copyright": "© 2026 Kinesis Transport d.o.o. All rights reserved."
   },
   "bottomNav": {
     "home": "Home",

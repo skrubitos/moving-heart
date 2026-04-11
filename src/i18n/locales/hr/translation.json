@@ -86,10 +86,12 @@
     "toastDesc": "Javit ćemo vam se u najkraćem mogućem roku."
   },
   "footer": {
-    "desc": "Profesionalne usluge prijevoza namještaja i selidbe. Fokus na jednostavnom dogovoru i pažljivom rukovanju.",
     "quickLinks": "Brzi linkovi",
     "contact": "Kontakt",
-    "copyright": "Sva prava pridržana."
+    "hours": "Radno vrijeme",
+    "hoursValue": "Pon — Ned · 08:00 – 20:00",
+    "city": "Split, Hrvatska",
+    "copyright": "© 2026 Kinesis Transport d.o.o. Sva prava pridržana."
   },
   "bottomNav": {
     "home": "Početna",
