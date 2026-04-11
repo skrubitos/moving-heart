@@ -51,8 +51,9 @@
   "trust": {
     "aboutBadge": "O nama",
     "aboutTitle": "Tko smo mi",
-    "aboutText1": "Mi smo nova firma specijalizirana za selidbe i prijevoz. Fokus nam je na jednostavnom dogovoru, dolasku na vrijeme i pažljivom rukovanju stvarima.",
-    "aboutText2": "Iako smo tek krenuli, svaki posao odrađujemo maksimalno profesionalno jer nam je cilj dugoročno zadovoljstvo klijenata.",
+    "aboutText1": "Specijalizirani smo za selidbe i prijevoz s fokusom na ono što klijentima najviše znači, jednostavan dogovor, točan dolazak i pažljivo rukovanje stvarima.",
+    "aboutText2": "Kao nova firma na tržištu, svaki posao odrađujemo s dodatnom razinom odgovornosti jer gradimo reputaciju od nule. To znači bez kašnjenja, bez neugodnih iznenađenja i bez kompromisa kad je u pitanju sigurnost vaših stvari.",
+    "aboutText3": "Naš cilj nije jednokratna usluga, nego dugoročno povjerenje i preporuke zadovoljnih klijenata.",
     "whyBadge": "Zašto odabrati nas",
     "whyTitle": "Kako radimo",
     "whySubtitle": "Jednostavan dogovor, transparentne cijene i pažljivo rukovanje — to je naš način rada.",

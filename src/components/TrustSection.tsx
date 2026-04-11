@@ -91,6 +91,9 @@ const TrustSection = () => {
               <p className="mt-4 text-muted-foreground leading-relaxed text-sm md:text-base">
                 {t("trust.aboutText2")}
               </p>
+              <p className="mt-4 text-muted-foreground leading-relaxed text-sm md:text-base">
+                {t("trust.aboutText3")}
+              </p>
             </div>
             <div className="rounded-3xl overflow-hidden border border-border shadow-xl">
               <img

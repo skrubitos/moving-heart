@@ -51,8 +51,9 @@
   "trust": {
     "aboutBadge": "About Us",
     "aboutTitle": "Who we are",
-    "aboutText1": "We are a new company specialised in moving and transport. Our focus is on simple arrangements, arriving on time, and careful handling of your belongings.",
-    "aboutText2": "Although we are just starting out, we carry out every job with maximum professionalism because our goal is long-term client satisfaction.",
+    "aboutText1": "We specialise in moving and transport, focusing on what matters most to our clients — simple arrangements, arriving on time, and careful handling of belongings.",
+    "aboutText2": "As a new company on the market, we approach every job with an extra level of responsibility because we are building our reputation from scratch. That means no delays, no unpleasant surprises, and no compromises when it comes to the safety of your belongings.",
+    "aboutText3": "Our goal is not a one-off service, but long-term trust and referrals from satisfied clients.",
     "whyBadge": "Why choose us",
     "whyTitle": "How we work",
     "whySubtitle": "Simple arrangements, transparent prices, and careful handling — that is our way of working.",
