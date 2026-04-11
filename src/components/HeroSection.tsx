@@ -17,8 +17,26 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
+      {/* Base grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-50" />
+
+      {/* Amber dot pattern overlay */}
+      <div className="absolute inset-0 bg-[radial-gradient(#fef3c7_1.5px,transparent_1.5px)] bg-[size:28px_28px] opacity-50 pointer-events-none" />
+
+      {/* Right panel tint */}
       <div className="absolute inset-y-0 right-0 w-1/2 bg-secondary/40 [clip-path:polygon(8%_0%,100%_0%,100%_100%,0%_100%)] hidden lg:block" />
+
+      {/* Blob top-left */}
+      <div className="hidden lg:block absolute -top-24 -left-24 w-[300px] h-[300px] rounded-full bg-[#f97316] opacity-[0.08] blur-[60px] pointer-events-none z-0" />
+
+      {/* Blob bottom-right */}
+      <div className="hidden lg:block absolute -bottom-32 -right-20 w-[400px] h-[400px] rounded-full bg-[#f97316] opacity-[0.06] blur-[80px] pointer-events-none z-0" />
+
+      {/* Decorative dot strip — far left */}
+      <div className="hidden lg:block absolute left-0 top-1/4 w-28 h-72 bg-[radial-gradient(#e5e7eb_1.5px,transparent_1.5px)] bg-[size:14px_14px] opacity-60 pointer-events-none z-0" />
+
+      {/* Decorative dot strip — far right */}
+      <div className="hidden lg:block absolute right-0 top-1/3 w-28 h-72 bg-[radial-gradient(#e5e7eb_1.5px,transparent_1.5px)] bg-[size:14px_14px] opacity-60 pointer-events-none z-0" />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-20 pb-16">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[calc(100vh-9rem)]">
