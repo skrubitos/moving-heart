@@ -1,6 +1,6 @@
 import { Phone, Mail, MapPin } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/contact";
+import { PHONE_DISPLAY, PHONE_HREF, COMPANY_OIB } from "@/lib/contact";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -63,7 +63,10 @@ const Footer = () => {
               </li>
               <li className="flex items-center justify-center gap-1.5 text-sm opacity-55">
                 <MapPin className="h-3.5 w-3.5 flex-shrink-0" />
-                {t("footer.city")}
+                <span>{t("footer.address")}</span>
+              </li>
+              <li className="text-[11px] opacity-40">
+                {t("footer.oibLabel")}: {COMPANY_OIB}
               </li>
             </ul>
           </div>
@@ -116,7 +119,10 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-2 text-sm opacity-55">
                 <MapPin className="h-4 w-4 flex-shrink-0" />
-                {t("footer.city")}
+                <address className="not-italic">{t("footer.address")}</address>
+              </li>
+              <li className="text-xs opacity-40">
+                {t("footer.oibLabel")}: {COMPANY_OIB}
               </li>
             </ul>
           </div>

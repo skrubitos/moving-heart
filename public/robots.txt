@@ -12,3 +12,9 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Sitemap
+Sitemap: https://kinesistransport.hr/sitemap.xml
+
+# Host
+Host: https://kinesistransport.hr
