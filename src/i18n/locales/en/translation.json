@@ -91,6 +91,8 @@
     "hours": "Working hours",
     "hoursValue": "Mon — Sun · 08:00 – 20:00",
     "city": "Split, Croatia",
+    "address": "Put Brodarice 3, 21000 Split",
+    "oibLabel": "VAT ID",
     "copyright": "© 2026 Kinesis Transport d.o.o. All rights reserved."
   },
   "bottomNav": {

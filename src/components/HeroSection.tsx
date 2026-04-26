@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { PHONE_HREF, WHATSAPP_URL } from "@/lib/contact";
 import { scrollToSection } from "@/lib/scroll";
-import kombiLogoImg from "../../slike/kombi logo.jpeg";
+import kombiLogoImg from "../../slike/kinesis-transport-logo.jpeg";
 
 const HeroSection = () => {
   const { t } = useTranslation();
@@ -139,8 +139,11 @@ const HeroSection = () => {
             <div className="rounded-3xl overflow-hidden border border-border shadow-2xl bg-white">
               <img
                 src={kombiLogoImg}
-                alt="Kinesis Transport vozilo"
+                alt="Kinesis Transport kombi za selidbe i prijevoz u Splitu"
                 className="w-full h-auto object-contain"
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
               />
               <div className="px-6 py-3.5 bg-secondary/60 border-t border-border flex items-center gap-2.5">
                 <span className="w-2 h-2 rounded-full bg-green-500 flex-shrink-0" />

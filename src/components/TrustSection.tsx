@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ShieldCheck, Clock, Banknote, Heart, User, ChevronDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import kombiImg from "../../slike/kombi.jpeg";
+import kombiImg from "../../slike/kinesis-transport-kombi.jpeg";
 
 type PointKey = "fast" | "flexible" | "fair" | "careful" | "individual";
 
@@ -98,8 +98,10 @@ const TrustSection = () => {
             <div className="rounded-3xl overflow-hidden border border-border shadow-xl">
               <img
                 src={kombiImg}
-                alt="Kinesis Transport – vozilo"
+                alt="Dostavni kombi Kinesis Transport — selidbe, dostava namještaja i kombi prijevoz u Splitu"
                 className="w-full h-56 md:h-72 object-cover object-center"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
