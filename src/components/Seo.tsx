@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import { Head } from "vite-react-ssg";
 import { useTranslation } from "react-i18next";
 import { SITE_URL } from "@/lib/contact";
 
@@ -44,7 +44,7 @@ const Seo = ({
     : [];
 
   return (
-    <Helmet>
+    <Head>
       <html lang={lang} />
       <title>{fullTitle}</title>
       <meta name="description" content={fullDescription} />
@@ -72,7 +72,7 @@ const Seo = ({
           {JSON.stringify(data)}
         </script>
       ))}
-    </Helmet>
+    </Head>
   );
 };
 

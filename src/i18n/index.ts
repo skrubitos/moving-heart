@@ -5,7 +5,8 @@ import hr from "./locales/hr/translation.json";
 import en from "./locales/en/translation.json";
 
 const STORAGE_KEY = "language";
-const savedLang = localStorage.getItem(STORAGE_KEY);
+const isBrowser = typeof window !== "undefined";
+const savedLang = isBrowser ? localStorage.getItem(STORAGE_KEY) : null;
 
 i18n
   .use(initReactI18next)
@@ -19,9 +20,10 @@ i18n
     interpolation: { escapeValue: false },
   });
 
-// Persist language changes to localStorage
-i18n.on("languageChanged", (lng) => {
-  localStorage.setItem(STORAGE_KEY, lng);
-});
+if (isBrowser) {
+  i18n.on("languageChanged", (lng) => {
+    localStorage.setItem(STORAGE_KEY, lng);
+  });
+}
 
 export default i18n;

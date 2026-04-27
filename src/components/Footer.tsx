@@ -1,108 +1,39 @@
 import { Phone, Mail, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { PHONE_DISPLAY, PHONE_HREF, COMPANY_OIB } from "@/lib/contact";
+import { PHONE_DISPLAY, PHONE_HREF, COMPANY_OIB, EMAIL, EMAIL_HREF } from "@/lib/contact";
+import { services } from "@/lib/services";
+import { locations } from "@/lib/locations";
 
 const Footer = () => {
   const { t } = useTranslation();
 
-  const links = [
-    { label: t("nav.services"), href: "#services" },
-    { label: t("nav.whyUs"), href: "#trust" },
-    { label: t("nav.contact"), href: "#contact" },
+  const company = [
+    { label: t("nav.whyUs"), to: "/o-nama" },
+    { label: t("nav.contact"), to: "/kontakt" },
+    { label: "FAQ", to: "/faq" },
+    { label: "Cjenik", to: "/cjenik" },
+    { label: "Uvjeti poslovanja", to: "/uvjeti-poslovanja" },
   ];
 
+  const featuredLocations = locations.slice(0, 6);
+
   return (
-    <footer className="bg-accent text-accent-foreground pt-8 pb-20 sm:pt-16 sm:pb-16">
-      <div className="max-w-4xl mx-auto px-6">
+    <footer className="bg-accent text-accent-foreground pt-12 pb-20 sm:pt-16 sm:pb-12">
+      <div className="max-w-6xl mx-auto px-6">
 
-        {/* ── MOBILE: 2-column compact layout ─────────────────────── */}
-        <div className="sm:hidden grid grid-cols-2 gap-4 text-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
 
-          {/* Brzi linkovi */}
-          <div>
-            <h4 className="text-[10px] font-bold uppercase tracking-widest mb-3 opacity-50">
-              {t("footer.quickLinks")}
-            </h4>
-            <ul className="space-y-1">
-              {links.map((item) => (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
-                    className="text-sm opacity-55 hover:opacity-100 hover:text-primary transition-all duration-200"
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Kontakt */}
-          <div>
-            <h4 className="text-[10px] font-bold uppercase tracking-widest mb-3 opacity-50">
-              {t("footer.contact")}
-            </h4>
-            <ul className="space-y-1.5">
+          <div className="col-span-2 md:col-span-1">
+            <h3 className="text-base font-bold text-white">Kinesis Transport</h3>
+            <p className="mt-3 text-sm opacity-60 leading-relaxed">
+              Selidbe, dostava namještaja i kombi prijevoz u Splitu i okolici.
+            </p>
+            <ul className="mt-5 space-y-2.5">
               <li>
                 <a
                   href={PHONE_HREF}
-                  className="flex items-center justify-center gap-1.5 text-sm opacity-55 hover:opacity-100 transition-opacity"
-                >
-                  <Phone className="h-3.5 w-3.5 flex-shrink-0" />
-                  {PHONE_DISPLAY}
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:info@kinesistransport.hr"
-                  className="flex items-center justify-center gap-1.5 text-sm opacity-55 hover:opacity-100 transition-opacity"
-                >
-                  <Mail className="h-3.5 w-3.5 flex-shrink-0" />
-                  <span className="break-all">info@kinesistransport.hr</span>
-                </a>
-              </li>
-              <li className="flex items-center justify-center gap-1.5 text-sm opacity-55">
-                <MapPin className="h-3.5 w-3.5 flex-shrink-0" />
-                <span>{t("footer.address")}</span>
-              </li>
-              <li className="text-[11px] opacity-40">
-                {t("footer.oibLabel")}: {COMPANY_OIB}
-              </li>
-            </ul>
-          </div>
-
-        </div>
-
-        {/* ── DESKTOP: 2-column layout ──────────────────────────────── */}
-        <div className="hidden sm:grid sm:grid-cols-2 sm:gap-12 max-w-lg mx-auto text-center sm:text-left">
-
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest mb-5 opacity-50">
-              {t("footer.quickLinks")}
-            </h4>
-            <ul className="space-y-2.5">
-              {links.map((item) => (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
-                    className="text-sm opacity-55 hover:opacity-100 hover:text-primary transition-all duration-200"
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest mb-5 opacity-50">
-              {t("footer.contact")}
-            </h4>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href={PHONE_HREF}
-                  className="flex items-center gap-2 text-sm opacity-55 hover:opacity-100 transition-opacity"
+                  className="flex items-center gap-2 text-sm opacity-70 hover:opacity-100 transition-opacity"
                 >
                   <Phone className="h-4 w-4 flex-shrink-0" />
                   {PHONE_DISPLAY}
@@ -110,15 +41,15 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="mailto:info@kinesistransport.hr"
-                  className="flex items-center gap-2 text-sm opacity-55 hover:opacity-100 transition-opacity"
+                  href={EMAIL_HREF}
+                  className="flex items-center gap-2 text-sm opacity-70 hover:opacity-100 transition-opacity break-all"
                 >
                   <Mail className="h-4 w-4 flex-shrink-0" />
-                  info@kinesistransport.hr
+                  {EMAIL}
                 </a>
               </li>
-              <li className="flex items-center gap-2 text-sm opacity-55">
-                <MapPin className="h-4 w-4 flex-shrink-0" />
+              <li className="flex items-start gap-2 text-sm opacity-70">
+                <MapPin className="h-4 w-4 flex-shrink-0 mt-0.5" />
                 <address className="not-italic">{t("footer.address")}</address>
               </li>
               <li className="text-xs opacity-40">
@@ -127,13 +58,66 @@ const Footer = () => {
             </ul>
           </div>
 
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-widest mb-4 opacity-50">
+              Naše usluge
+            </h4>
+            <ul className="space-y-2">
+              {services.map((s) => (
+                <li key={s.slug}>
+                  <Link
+                    to={s.path}
+                    className="text-sm opacity-65 hover:opacity-100 hover:text-primary transition-all"
+                  >
+                    {s.navLabel}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-widest mb-4 opacity-50">
+              Lokacije
+            </h4>
+            <ul className="space-y-2">
+              {featuredLocations.map((l) => (
+                <li key={l.slug}>
+                  <Link
+                    to={l.path}
+                    className="text-sm opacity-65 hover:opacity-100 hover:text-primary transition-all"
+                  >
+                    {l.navLabel}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-widest mb-4 opacity-50">
+              Tvrtka
+            </h4>
+            <ul className="space-y-2">
+              {company.map((item) => (
+                <li key={item.to}>
+                  <Link
+                    to={item.to}
+                    className="text-sm opacity-65 hover:opacity-100 hover:text-primary transition-all"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
         </div>
 
       </div>
 
-      {/* Full-width border + copyright */}
-      <div className="mt-8 sm:mt-12 border-t border-white/10">
-        <div className="max-w-4xl mx-auto px-6 pt-4 sm:pt-8 text-center text-xs opacity-40">
+      <div className="mt-10 sm:mt-14 border-t border-white/10">
+        <div className="max-w-6xl mx-auto px-6 pt-5 sm:pt-6 text-center text-xs opacity-40">
           {t("footer.copyright")}
         </div>
       </div>
