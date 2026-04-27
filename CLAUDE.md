@@ -220,14 +220,40 @@ Preostalo:
 - Blog — **odbijeno za sada** (po dogovoru s vlasnikom)
 - **Google Business Profile** — u izradi; kad se verificira, dodati URL u `sameAs` JSON-LD-a, footer i ovaj dokument
 
-### ⏳ Faza 4 — Performanse i Core Web Vitals (preostalo)
+### ⏳ Faza 4 — Performanse i Core Web Vitals ✅ DONE (djelomično)
 
-- Code-splitting po ruti (`React.lazy` + `Suspense`)
-- Smanjiti `framer-motion` bundle gdje nije potreban
-- Pravi `og-image.jpg` 1200×630 (trenutno se referencira `https://kinesistransport.hr/og-image.jpg` koji **još ne postoji**; obavezno postaviti prije live-a)
-- WebP varijante slika + `<picture>` element
-- `vite-plugin-compression` (gzip + brotli)
-- Provjeriti LCP slike u produkciji
+Implementirano u commit-u koji prati ovaj dokument:
+
+**Code-splitting po ruti** (`vite-react-ssg lazy` + `Suspense`):
+- `src/routes.tsx` — sve subpages koriste `lazy: () => import(...)`. Index ostaje eager za brzo prvo učitavanje.
+- ServicePage i LocationPage koriste lazy + closure pattern jer primaju `slug` prop. Jedan chunk dijeljen kroz svih 6 service ruta + jedan kroz svih 10 location ruta.
+- `src/Layout.tsx` — `<Suspense fallback={null}>` oko `<Outlet/>`.
+- Page entries svaki imaju `Component` named export uz `default` (vite-react-ssg konvencija za lazy).
+
+**Manual vendor chunks** (`vite.config.ts` rollupOptions.output.manualChunks):
+- `react-vendor` (react, react-dom, react-router) — 228 KB / 57 KB brotli
+- `motion` (framer-motion) — 114 KB / 33 KB brotli
+- `ui-vendor` (@radix-ui/*) — 38 KB / 19 KB brotli
+- `query` (@tanstack/react-query) — 25 KB / 7 KB brotli
+- `i18n` (i18next, react-i18next) — 48 KB / 14 KB brotli
+- `app` (ostatak source-a) — 165 KB / 42 KB brotli
+- Per-page chunks: 1–4 KB svaki (lazy load tek pri navigaciji)
+
+**Post-build kompresija** (`scripts/compress-dist.mjs`):
+- Generira `.gz` (gzip lvl 9) i `.br` (brotli quality 11) za sve HTML/JS/CSS/JSON/SVG/XML datoteke u `dist/`
+- Pokrenuto kao dio `npm run build` (nakon SSG renderiranja, jer SSG generira HTML fajlove tek na kraju)
+- Tipičan rezultat: ~1530 KB → 385 KB gzip / 337 KB brotli (~78% smanjenje)
+- Hosting koji ne podržava on-the-fly compression može serv-ati `.br`/`.gz` direktno
+
+**Build skripte**:
+- `npm run build` — SSG + kompresija (default)
+- `npm run build:csr` — SPA fallback bez SSG (samo Vite)
+
+Preostalo:
+- WebP / AVIF varijante slika + `<picture>` element (potrebno `sharp` ili `imagetools`)
+- Pravi `og-image.jpg` 1200×630 (trenutno se referencira URL koji **još ne postoji**)
+- LCP mjerenje u produkciji (Lighthouse / WebPageTest nakon deploya)
+- `<link rel="preload">` za hero sliku (pomaže LCP)
 
 ### ⏳ Faza 5 — Lokalni SEO i izvan stranice (preostalo)
 

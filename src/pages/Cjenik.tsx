@@ -124,4 +124,5 @@ const Cjenik = () => {
   );
 };
 
+export const Component = Cjenik;
 export default Cjenik;
