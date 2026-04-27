@@ -194,7 +194,7 @@ Implementirano u commit-u koji prati ovaj dokument:
 - `public/sitemap.xml` — proširen s 22 URL-ovima i prioritetima
 - `src/i18n/locales/{hr,en}/translation.json` — dodani `nav.locations`, `nav.faq`, `nav.pricing` ključevi
 
-### ⏳ Faza 2 — On-page optimizacija (djelomično, preostali dio)
+### ⏳ Faza 2 — On-page optimizacija ✅ DONE
 
 Završeno kroz Fazu 1:
 - ✅ Title pattern `<Tema> Split | Kinesis Transport` na svim podstranicama
@@ -203,9 +203,13 @@ Završeno kroz Fazu 1:
 - ✅ Navbar: dropdownovi "Usluge" i "Lokacije"
 - ✅ BreadcrumbList JSON-LD na svim podstranicama (vidljivo + JSON-LD)
 
-Preostalo:
-- Internal linking: cross-linkovi između srodnih usluga / lokacija unutar bodyja stranica (npr. /selidbe-split → /selidbe + /kombi-prijevoz-split)
-- Hreflang per-route u sitemap-u (trenutno je samo na `/`)
+Završeno kroz Fazu 2 (commit koji prati ovaj dokument):
+- ✅ **Internal linking**: novi `src/components/page/RelatedLinks.tsx` — render-amo cross-linkove na podstranicama:
+  - **ServicePage**: dvije RelatedLinks sekcije — "Pokrivamo Split i okolicu" (6 lokacija) + "Druge usluge" (3 sibling servisa). Svaka sekcija ima `eyebrow + title + intro` i grid kartica s ArrowUpRight ikonom.
+  - **LocationPage**: dvije RelatedLinks sekcije — "Druge lokacije" (siblings, prema isIsland kategoriji) + "Sve usluge" (6 servisa).
+  - **Cjenik**: jedna RelatedLinks sekcija "Pogledajte konkretne usluge" (svih 6 servisa).
+  - Verificirano: `dist/selidbe-split.html` ima 51 internal links; `dist/selidbe.html` ima 45 internal links (od ~5 prije Faze 2).
+- ✅ **Hreflang per-route u sitemap-u**: svaki URL u `public/sitemap.xml` ima `<xhtml:link rel="alternate" hreflang="hr|en|x-default" />` — sad je 22 URL × 3 hreflang. (EN je samo prijevod istog URL-a, pa svi alternativni jezici pokazuju na isti URL — common pattern za sites bez language-prefixed URL-ova.)
 
 ### ⏳ Faza 3 — Sadržaj i autoritet (djelomično)
 

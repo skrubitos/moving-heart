@@ -2,9 +2,10 @@
 <urlset
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
   <url>
     <loc>https://kinesistransport.hr/</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="hr" href="https://kinesistransport.hr/" />
@@ -13,31 +14,171 @@
   </url>
 
   <!-- Servisne stranice -->
-  <url><loc>https://kinesistransport.hr/selidbe</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://kinesistransport.hr/dostava-namjestaja</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://kinesistransport.hr/prijevoz-paketa</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://kinesistransport.hr/usputni-transporti</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://kinesistransport.hr/medugradski-transporti</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://kinesistransport.hr/utovar-istovar</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url>
+    <loc>https://kinesistransport.hr/selidbe</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://kinesistransport.hr/selidbe" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinesistransport.hr/selidbe" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kinesistransport.hr/selidbe" />
+  </url>
+  <url>
+    <loc>https://kinesistransport.hr/dostava-namjestaja</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://kinesistransport.hr/dostava-namjestaja" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinesistransport.hr/dostava-namjestaja" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kinesistransport.hr/dostava-namjestaja" />
+  </url>
+  <url>
+    <loc>https://kinesistransport.hr/prijevoz-paketa</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://kinesistransport.hr/prijevoz-paketa" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinesistransport.hr/prijevoz-paketa" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kinesistransport.hr/prijevoz-paketa" />
+  </url>
+  <url>
+    <loc>https://kinesistransport.hr/usputni-transporti</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://kinesistransport.hr/usputni-transporti" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinesistransport.hr/usputni-transporti" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kinesistransport.hr/usputni-transporti" />
+  </url>
+  <url>
+    <loc>https://kinesistransport.hr/medugradski-transporti</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://kinesistransport.hr/medugradski-transporti" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinesistransport.hr/medugradski-transporti" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kinesistransport.hr/medugradski-transporti" />
+  </url>
+  <url>
+    <loc>https://kinesistransport.hr/utovar-istovar</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://kinesistransport.hr/utovar-istovar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinesistransport.hr/utovar-istovar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kinesistransport.hr/utovar-istovar" />
+  </url>
 
   <!-- Lokacijske stranice — Split fokus -->
-  <url><loc>https://kinesistransport.hr/selidbe-split</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://kinesistransport.hr/kombi-prijevoz-split</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://kinesistransport.hr/selidbe-solin</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://kinesistransport.hr/selidbe-kastela</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://kinesistransport.hr/selidbe-trogir</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://kinesistransport.hr/selidbe-omis</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url>
+    <loc>https://kinesistransport.hr/selidbe-split</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://kinesistransport.hr/selidbe-split" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinesistransport.hr/selidbe-split" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kinesistransport.hr/selidbe-split" />
+  </url>
+  <url>
+    <loc>https://kinesistransport.hr/kombi-prijevoz-split</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://kinesistransport.hr/kombi-prijevoz-split" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinesistransport.hr/kombi-prijevoz-split" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kinesistransport.hr/kombi-prijevoz-split" />
+  </url>
+  <url>
+    <loc>https://kinesistransport.hr/selidbe-solin</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://kinesistransport.hr/selidbe-solin" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinesistransport.hr/selidbe-solin" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kinesistransport.hr/selidbe-solin" />
+  </url>
+  <url>
+    <loc>https://kinesistransport.hr/selidbe-kastela</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://kinesistransport.hr/selidbe-kastela" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinesistransport.hr/selidbe-kastela" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kinesistransport.hr/selidbe-kastela" />
+  </url>
+  <url>
+    <loc>https://kinesistransport.hr/selidbe-trogir</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://kinesistransport.hr/selidbe-trogir" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinesistransport.hr/selidbe-trogir" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kinesistransport.hr/selidbe-trogir" />
+  </url>
+  <url>
+    <loc>https://kinesistransport.hr/selidbe-omis</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://kinesistransport.hr/selidbe-omis" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinesistransport.hr/selidbe-omis" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kinesistransport.hr/selidbe-omis" />
+  </url>
 
   <!-- Otoci -->
-  <url><loc>https://kinesistransport.hr/selidbe-brac</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://kinesistransport.hr/selidbe-hvar</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://kinesistransport.hr/selidbe-vis</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://kinesistransport.hr/selidbe-solta</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url>
+    <loc>https://kinesistransport.hr/selidbe-brac</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://kinesistransport.hr/selidbe-brac" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinesistransport.hr/selidbe-brac" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kinesistransport.hr/selidbe-brac" />
+  </url>
+  <url>
+    <loc>https://kinesistransport.hr/selidbe-hvar</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://kinesistransport.hr/selidbe-hvar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinesistransport.hr/selidbe-hvar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kinesistransport.hr/selidbe-hvar" />
+  </url>
+  <url>
+    <loc>https://kinesistransport.hr/selidbe-vis</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://kinesistransport.hr/selidbe-vis" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinesistransport.hr/selidbe-vis" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kinesistransport.hr/selidbe-vis" />
+  </url>
+  <url>
+    <loc>https://kinesistransport.hr/selidbe-solta</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://kinesistransport.hr/selidbe-solta" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinesistransport.hr/selidbe-solta" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kinesistransport.hr/selidbe-solta" />
+  </url>
 
   <!-- Sadržajne / pravne -->
-  <url><loc>https://kinesistransport.hr/o-nama</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://kinesistransport.hr/kontakt</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://kinesistransport.hr/faq</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://kinesistransport.hr/cjenik</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url>
+    <loc>https://kinesistransport.hr/o-nama</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://kinesistransport.hr/o-nama" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinesistransport.hr/o-nama" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kinesistransport.hr/o-nama" />
+  </url>
+  <url>
+    <loc>https://kinesistransport.hr/kontakt</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://kinesistransport.hr/kontakt" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinesistransport.hr/kontakt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kinesistransport.hr/kontakt" />
+  </url>
+  <url>
+    <loc>https://kinesistransport.hr/faq</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://kinesistransport.hr/faq" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinesistransport.hr/faq" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kinesistransport.hr/faq" />
+  </url>
+  <url>
+    <loc>https://kinesistransport.hr/cjenik</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://kinesistransport.hr/cjenik" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinesistransport.hr/cjenik" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kinesistransport.hr/cjenik" />
+  </url>
 
 </urlset>
