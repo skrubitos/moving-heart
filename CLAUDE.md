@@ -128,60 +128,93 @@ Sekundarne / long-tail:
 9. **i18n**
    - hr/en `footer.address` i `footer.oibLabel` ključevi dodani
 
-### ⏳ Faza 0b — Pre-rendering (preostalo)
+### ⏳ Faza 0b — Pre-rendering ✅ DONE
 
-Bez ovoga su meta tagovi iz Helmeta u DOM-u tek nakon JS execution. Crawlerima poput Facebooka, LinkedIna i Twittera ovo ne radi pouzdano.
+Implementirano u commit-u koji prati ovaj dokument:
 
-**Opcije (predložiti za sljedeću iteraciju):**
-- `vite-react-ssg` — najjednostavnije za Vite + React
-- `react-snap` — post-build crawler
-- `vite-plugin-prerender`
+- `vite-react-ssg` ^0.9.1-beta.1 dodan kao devDependency
+- `package.json`: `"build"` skripta sad koristi `vite-react-ssg build`; `"build:csr"` ostaje kao SPA fallback
+- Refaktor entry pointa:
+  - `src/App.tsx` i `src/App.css` uklonjeni (vite-react-ssg ne koristi `<App>` pattern)
+  - Kreiran `src/Layout.tsx` — root layout s `QueryClientProvider`, `TooltipProvider`, `Toaster`, `Sonner`, `ScrollManager` i `<Outlet/>`. **`HelmetProvider` je uklonjen** jer ga vite-react-ssg interno omotava.
+  - Kreiran `src/routes.tsx` — `RouteRecord[]` izvoz s `Layout` parent + child rute za sve stranice (Index, /selidbe…, /selidbe-split…, /o-nama, /kontakt, /faq, /cjenik, /uvjeti-poslovanja, 404)
+  - `src/main.tsx` sada poziva `ViteReactSSG({ routes })` umjesto `createRoot(<App/>)`
+- `src/components/Seo.tsx` — `Helmet` zamijenjen s `Head` iz `vite-react-ssg`. **Razlog**: vite-react-ssg ima nested `react-helmet-async@1.3.0`, a naš projekt je imao `@3.0.0`. Da bi SSR ekstrakcija radila, sve `Helmet` instance moraju doći iz iste kopije — `Head` wrapper iz vite-react-ssg-a koristi internu kopiju.
+- `src/i18n/index.ts` — SSR-safe guard oko `localStorage.getItem` (`typeof window !== "undefined"`)
+- `src/components/ScrollManager.tsx` — novi komponenta koja na promjenu rute scrolla na vrh ili na hash anchor
+- Build output: 22 statičke HTML stranice u `dist/` (svaka s ispravnim `<title>`, meta description, OG/Twitter tagovima, canonical, `<html lang>`, BreadcrumbList + Service/FAQ JSON-LD).
 
-### ⏳ Faza 1 — Stvarne podstranice (preostalo)
+Verificirano:
+- `dist/selidbe-split.html` sadrži `<title data-rh="true">Selidbe Split | Kinesis Transport — selidbe stanova, kuća, ureda</title>` direktno u SSR-iranom HTML-u
+- BreadcrumbList JSON-LD u `<head>`-u prije bilo kakvog JS-a
+- Sve interne navigacijske veze su `<Link>` (klijentski routing), ali svaka URL ima vlastiti pre-renderirani HTML pa social crawleri (FB, LinkedIn, Twitter) i Googlebot dobivaju potpunu meta-konfiguraciju.
 
-Dodati React Router rute + per-route Seo komponente za:
+Napomene za buduće iteracije:
+- Postoji benigni SSR warning `fetchPriority` (React 18 SSR još uvijek piše lowercase u DOM-u). Ne utječe na rezultat.
+- Bundle iznad 500 kB — pokriveno u Fazi 4.
 
-**Servisne stranice:**
-- `/selidbe` — Selidbe stanova, kuća, ureda
-- `/dostava-namjestaja`
-- `/prijevoz-paketa`
-- `/usputni-transporti`
-- `/medugradski-transporti`
-- `/utovar-istovar`
-- `/cjenik`
+### ⏳ Faza 1 — Stvarne podstranice ✅ DONE
 
-**Lokacijske stranice (Split-fokus):**
-- `/selidbe-split` (primarna)
-- `/selidbe-solin`
-- `/selidbe-kastela`
-- `/selidbe-trogir`
-- `/selidbe-omis`
-- `/kombi-prijevoz-split`
+Implementirano u commit-u koji prati ovaj dokument:
 
-**Otoci (visoka vrijednost, niska konkurencija):**
-- `/selidbe-brac`, `/selidbe-hvar`, `/selidbe-vis`, `/selidbe-solta`
+**Reusable layout / page komponente:**
 
-**Šire HR rute (po želji):**
-- `/selidbe-zagreb`, `/selidbe-rijeka`, `/selidbe-zadar`, `/selidbe-dubrovnik`
+- `src/components/page/PageLayout.tsx` — Navbar + main + Footer + StickyContact wrapper za sve podstranice
+- `src/components/page/PageHero.tsx` — H1 hero sekcija s breadcrumbs slot-om, badge-om, bullets-ima i CTA-ovima
+- `src/components/page/Breadcrumbs.tsx` — vidljivi breadcrumbs (Home → … → trenutna)
+- `src/components/page/ContentSection.tsx` — generic sekcija s eyebrow / title / intro / children
+- `src/components/page/FeatureGrid.tsx` — grid kartica s ikonom + naslovom + opisom
+- `src/components/page/FAQAccordion.tsx` — Radix akordeon s FAQ items-ima
+- `src/components/page/CTABand.tsx` — kontaktna CTA traka (CTA + telefon)
+
+**Data registries:**
+
+- `src/lib/services.ts` — 6 usluga (Selidbe, Dostava namještaja, Prijevoz paketa, Usputni transporti, Međugradski transporti, Utovar i istovar). Svaka stavka ima: slug, path, navLabel, metaTitle, metaDescription, keywords, H1, intro, bullets, features, optional process, optional faqs.
+- `src/lib/locations.ts` — 10 lokacija (Split, Solin, Kaštela, Trogir, Omiš, Kombi prijevoz Split, otoci Brač/Hvar/Vis/Šolta). Svaka: slug, path, navLabel, city, region, isIsland, metaTitle, metaDescription, keywords, H1, intro, highlights, optional neighborhoods.
+- `src/lib/seo.ts` — helperi: `buildBreadcrumbJsonLd`, `buildFaqJsonLd`, `buildServiceJsonLd`
+
+**Generic stranice:**
+
+- `src/pages/ServicePage.tsx` — prima `slug` prop, učitava iz `services.ts` i renderira PageHero + FeatureGrid (features) + opcionalni process + FAQAccordion + CTABand. JSON-LD: BreadcrumbList + Service + (opcionalni) FAQPage.
+- `src/pages/LocationPage.tsx` — prima `slug` prop, učitava iz `locations.ts`, renderira PageHero + popularne usluge linkovi + (opcionalni) lista kvartova/mjesta + CTABand. JSON-LD: BreadcrumbList + Service.
 
 **Sadržajne stranice:**
-- `/o-nama`
-- `/kontakt` (vlastita stranica s LocalBusiness schemom + Google Maps embed)
-- `/faq` (FAQPage schema)
-- `/uvjeti-poslovanja`
 
-### ⏳ Faza 2 — On-page optimizacija (preostalo)
+- `src/pages/ONama.tsx` — Kinesis Transport priča + 6 vrijednosti (FeatureGrid)
+- `src/pages/Kontakt.tsx` — kontakt kartice (telefon, WhatsApp, email, radno vrijeme) + adresa s OIB-om + ContactSection (forma) + LocalBusiness JSON-LD
+- `src/pages/Faq.tsx` — 10 najčešćih pitanja s FAQPage JSON-LD-om
+- `src/pages/Cjenik.tsx` — 3 paketa (Mala / Standardna / Veća selidba) + faktori cijene
+- `src/pages/UvjetiPoslovanja.tsx` — pravni dokument (`noIndex`)
 
-- Title pattern: `<Tema> Split | Kinesis Transport`
-- Per-page meta description (140–160 znakova) s telefonom
-- Footer: dodati 2 nova stupca "Naše usluge" i "Lokacije" s linkovima na podstranice
-- Navbar: prebaciti `#services` → `/selidbe`, dropdown "Lokacije"
-- BreadcrumbList JSON-LD na podstranicama
+**Routing & navigation:**
 
-### ⏳ Faza 3 — Sadržaj i autoritet (preostalo)
+- `src/routes.tsx` (zajedno s Phase 0b) — sve rute kroz Layout parent
+- `src/components/Navbar.tsx` — desktop dropdownovi za "Usluge" i "Lokacije" + linkovi /o-nama, /faq, /kontakt; mobile menu s `<details>` akordeonima. Lokacijski-svjestan: na home-u CTA scrolla na #contact, izvan home-a navigira na /kontakt.
+- `src/components/Footer.tsx` — 4 stupca (Kontakt, Naše usluge, Lokacije, Tvrtka) sa svim linkovima na podstranice
+- `public/sitemap.xml` — proširen s 22 URL-ovima i prioritetima
+- `src/i18n/locales/{hr,en}/translation.json` — dodani `nav.locations`, `nav.faq`, `nav.pricing` ključevi
 
-- FAQ stranica + FAQ akordeon na svakoj servisnoj podstranici
-- Cjenik (okvirni paketi)
+### ⏳ Faza 2 — On-page optimizacija (djelomično, preostali dio)
+
+Završeno kroz Fazu 1:
+- ✅ Title pattern `<Tema> Split | Kinesis Transport` na svim podstranicama
+- ✅ Per-page meta description (140–160 znakova)
+- ✅ Footer: stupci "Naše usluge", "Lokacije", "Tvrtka"
+- ✅ Navbar: dropdownovi "Usluge" i "Lokacije"
+- ✅ BreadcrumbList JSON-LD na svim podstranicama (vidljivo + JSON-LD)
+
+Preostalo:
+- Internal linking: cross-linkovi između srodnih usluga / lokacija unutar bodyja stranica (npr. /selidbe-split → /selidbe + /kombi-prijevoz-split)
+- Hreflang per-route u sitemap-u (trenutno je samo na `/`)
+
+### ⏳ Faza 3 — Sadržaj i autoritet (djelomično)
+
+Završeno kroz Fazu 1:
+- ✅ Stranica `/faq` s 10 pitanja i FAQPage JSON-LD-om
+- ✅ Per-service FAQ na `/selidbe`, `/dostava-namjestaja`, `/prijevoz-paketa` (FAQPage JSON-LD)
+- ✅ `/cjenik` s 3 okvirna paketa i faktorima
+
+Preostalo:
 - Vozni park stranica (s pravim fotkama, dimenzije, kapacitet)
 - Recenzije (Google reviews widget kad GBP bude verificiran)
 - Blog — **odbijeno za sada** (po dogovoru s vlasnikom)
@@ -207,9 +240,12 @@ Dodati React Router rute + per-route Seo komponente za:
 
 ## Kako funkcioniraju SEO komponente (developer note)
 
-- **`src/components/Seo.tsx`** — koristiti na svakoj `pages/*.tsx` stranici. Props: `title`, `description`, `path`, `image`, `keywords`, `jsonLd`, `noIndex`. Auto-postavlja `<html lang>` po `i18n.language`.
-- **`index.html`** — sadrži *baseline* meta tagove i `MovingCompany` JSON-LD. Helmet ih dinamički nadjačava per-stranica.
+- **`src/components/Seo.tsx`** — koristiti na svakoj `pages/*.tsx` stranici. Props: `title`, `description`, `path`, `image`, `keywords`, `jsonLd`, `noIndex`. Interno koristi `Head` iz `vite-react-ssg` (ne `Helmet` direktno) zbog SSG kompatibilnosti.
+- **`index.html`** — sadrži *baseline* meta tagove i `MovingCompany` JSON-LD. Helmet (preko `Head`) ih dinamički nadjačava per-stranica.
 - **`src/lib/contact.ts`** — jedinstveni izvor za sve poslovne podatke. Koristi se u Footeru, Seo komponenti, JSON-LD-u.
+- **`src/lib/services.ts`, `src/lib/locations.ts`** — data registries; dodavanje nove podstranice = jedan unos u array, ruta i sitemap ulaz se generiraju u `src/routes.tsx` i ručno se dodaje u `public/sitemap.xml`.
+- **`src/lib/seo.ts`** — `buildBreadcrumbJsonLd`, `buildFaqJsonLd`, `buildServiceJsonLd` helperi — koristiti za sve nove stranice.
+- **Pre-rendering**: `npm run build` koristi `vite-react-ssg build` i pre-renderira sve rute u zasebne HTML fajlove u `dist/`. `npm run build:csr` ostaje SPA fallback.
 
 ---
 

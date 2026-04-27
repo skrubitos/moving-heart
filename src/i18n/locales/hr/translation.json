@@ -3,7 +3,10 @@
     "services": "Usluge",
     "whyUs": "O nama",
     "contact": "Kontakt",
-    "cta": "Zatražite ponudu"
+    "cta": "Zatražite ponudu",
+    "locations": "Lokacije",
+    "faq": "FAQ",
+    "pricing": "Cjenik"
   },
   "hero": {
     "badge": "Split i okolica · Dostupni 7 dana",

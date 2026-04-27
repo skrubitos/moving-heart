@@ -3,7 +3,10 @@
     "services": "Services",
     "whyUs": "About Us",
     "contact": "Contact",
-    "cta": "Get a Quote"
+    "cta": "Get a Quote",
+    "locations": "Locations",
+    "faq": "FAQ",
+    "pricing": "Pricing"
   },
   "hero": {
     "badge": "Split & surroundings · Available 7 days",
