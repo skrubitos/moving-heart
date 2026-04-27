@@ -84,4 +84,5 @@ const ONama = () => {
   );
 };
 
+export const Component = ONama;
 export default ONama;

@@ -83,4 +83,5 @@ const Faq = () => {
   );
 };
 
+export const Component = Faq;
 export default Faq;

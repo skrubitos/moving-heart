@@ -1,14 +1,6 @@
 import type { RouteRecord } from "vite-react-ssg";
 import Layout from "./Layout";
 import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import ServicePage from "./pages/ServicePage";
-import LocationPage from "./pages/LocationPage";
-import ONama from "./pages/ONama";
-import Kontakt from "./pages/Kontakt";
-import Faq from "./pages/Faq";
-import Cjenik from "./pages/Cjenik";
-import UvjetiPoslovanja from "./pages/UvjetiPoslovanja";
 import { services } from "./lib/services";
 import { locations } from "./lib/locations";
 
@@ -19,26 +11,52 @@ export const routes: RouteRecord[] = [
     entry: "src/Layout.tsx",
     children: [
       { index: true, element: <Index />, entry: "src/pages/Index.tsx" },
-      { path: "o-nama", element: <ONama />, entry: "src/pages/ONama.tsx" },
-      { path: "kontakt", element: <Kontakt />, entry: "src/pages/Kontakt.tsx" },
-      { path: "faq", element: <Faq />, entry: "src/pages/Faq.tsx" },
-      { path: "cjenik", element: <Cjenik />, entry: "src/pages/Cjenik.tsx" },
+      {
+        path: "o-nama",
+        lazy: () => import("./pages/ONama"),
+        entry: "src/pages/ONama.tsx",
+      },
+      {
+        path: "kontakt",
+        lazy: () => import("./pages/Kontakt"),
+        entry: "src/pages/Kontakt.tsx",
+      },
+      {
+        path: "faq",
+        lazy: () => import("./pages/Faq"),
+        entry: "src/pages/Faq.tsx",
+      },
+      {
+        path: "cjenik",
+        lazy: () => import("./pages/Cjenik"),
+        entry: "src/pages/Cjenik.tsx",
+      },
       {
         path: "uvjeti-poslovanja",
-        element: <UvjetiPoslovanja />,
+        lazy: () => import("./pages/UvjetiPoslovanja"),
         entry: "src/pages/UvjetiPoslovanja.tsx",
       },
-      ...services.map((s) => ({
+      ...services.map<RouteRecord>((s) => ({
         path: s.slug,
-        element: <ServicePage slug={s.slug} />,
         entry: "src/pages/ServicePage.tsx",
+        lazy: async () => {
+          const mod = await import("./pages/ServicePage");
+          return { Component: () => <mod.default slug={s.slug} /> };
+        },
       })),
-      ...locations.map((l) => ({
+      ...locations.map<RouteRecord>((l) => ({
         path: l.slug,
-        element: <LocationPage slug={l.slug} />,
         entry: "src/pages/LocationPage.tsx",
+        lazy: async () => {
+          const mod = await import("./pages/LocationPage");
+          return { Component: () => <mod.default slug={l.slug} /> };
+        },
       })),
-      { path: "*", element: <NotFound />, entry: "src/pages/NotFound.tsx" },
+      {
+        path: "*",
+        lazy: () => import("./pages/NotFound"),
+        entry: "src/pages/NotFound.tsx",
+      },
     ],
   },
 ];

@@ -141,4 +141,5 @@ const Kontakt = () => {
   );
 };
 
+export const Component = Kontakt;
 export default Kontakt;

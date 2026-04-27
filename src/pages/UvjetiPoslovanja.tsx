@@ -90,4 +90,5 @@ const UvjetiPoslovanja = () => {
   );
 };
 
+export const Component = UvjetiPoslovanja;
 export default UvjetiPoslovanja;
