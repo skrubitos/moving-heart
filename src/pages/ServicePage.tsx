@@ -6,7 +6,9 @@ import ContentSection from "@/components/page/ContentSection";
 import FeatureGrid from "@/components/page/FeatureGrid";
 import FAQAccordion from "@/components/page/FAQAccordion";
 import CTABand from "@/components/page/CTABand";
-import { getServiceBySlug } from "@/lib/services";
+import RelatedLinks from "@/components/page/RelatedLinks";
+import { getServiceBySlug, services } from "@/lib/services";
+import { locations } from "@/lib/locations";
 import { buildBreadcrumbJsonLd, buildFaqJsonLd, buildServiceJsonLd } from "@/lib/seo";
 
 type ServicePageProps = { slug: string };
@@ -29,6 +31,20 @@ const ServicePage = ({ slug }: ServicePageProps) => {
   if (service.faqs && service.faqs.length > 0) {
     jsonLd.push(buildFaqJsonLd(service.faqs));
   }
+
+  const relatedServices = services
+    .filter((s) => s.slug !== service.slug)
+    .slice(0, 3)
+    .map((s) => ({ to: s.path, label: s.title, description: s.intro.slice(0, 110) + "…" }));
+
+  const relatedLocations = locations
+    .filter((l) => !l.isIsland)
+    .slice(0, 6)
+    .map((l) => ({
+      to: l.path,
+      label: `${service.title} ${l.city}`,
+      description: l.intro.slice(0, 110) + "…",
+    }));
 
   return (
     <PageLayout>
@@ -65,9 +81,24 @@ const ServicePage = ({ slug }: ServicePageProps) => {
         <FAQAccordion items={service.faqs} />
       )}
 
+      <RelatedLinks
+        eyebrow="Lokacije"
+        title="Pokrivamo Split i okolicu"
+        intro="Selidbe i kombi prijevoz na cijelom području Splita i okolnih mjesta."
+        items={relatedLocations}
+        variant="muted"
+      />
+
+      <RelatedLinks
+        eyebrow="Druge usluge"
+        title="Pogledajte i ostale usluge"
+        items={relatedServices}
+      />
+
       <CTABand />
     </PageLayout>
   );
 };
 
+export const Component = ServicePage;
 export default ServicePage;

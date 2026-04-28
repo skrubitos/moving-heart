@@ -5,7 +5,8 @@ import PageHero from "@/components/page/PageHero";
 import ContentSection from "@/components/page/ContentSection";
 import FeatureGrid from "@/components/page/FeatureGrid";
 import CTABand from "@/components/page/CTABand";
-import { getLocationBySlug } from "@/lib/locations";
+import RelatedLinks from "@/components/page/RelatedLinks";
+import { getLocationBySlug, locations } from "@/lib/locations";
 import { services } from "@/lib/services";
 import { buildBreadcrumbJsonLd, buildServiceJsonLd } from "@/lib/seo";
 
@@ -32,6 +33,21 @@ const LocationPage = ({ slug }: LocationPageProps) => {
   const popularServices = services.filter((s) =>
     ["selidbe", "dostava-namjestaja", "prijevoz-paketa", "utovar-istovar"].includes(s.slug),
   );
+
+  const siblingLocations = locations
+    .filter((l) => l.slug !== location.slug && l.isIsland === location.isIsland)
+    .slice(0, 6)
+    .map((l) => ({
+      to: l.path,
+      label: `Selidbe ${l.city}`,
+      description: l.intro.slice(0, 110) + "…",
+    }));
+
+  const allServiceLinks = services.map((s) => ({
+    to: s.path,
+    label: s.title,
+    description: s.intro.slice(0, 110) + "…",
+  }));
 
   return (
     <PageLayout>
@@ -92,6 +108,24 @@ const LocationPage = ({ slug }: LocationPageProps) => {
         </ContentSection>
       )}
 
+      <RelatedLinks
+        eyebrow={location.isIsland ? "Drugi otoci" : "Druge lokacije"}
+        title={
+          location.isIsland
+            ? "Selidbe na ostale otoke"
+            : "Selidbe i u drugim mjestima"
+        }
+        intro="Pokrivamo Split i okolicu — pogledajte sve lokacije gdje radimo."
+        items={siblingLocations}
+        variant="muted"
+      />
+
+      <RelatedLinks
+        eyebrow="Sve usluge"
+        title="Detaljnije o pojedinim uslugama"
+        items={allServiceLinks}
+      />
+
       <CTABand
         title={`Trebate selidbu ili prijevoz u ${location.city}?`}
         subtitle="Javite nam se za besplatnu procjenu — odgovaramo brzo."
@@ -100,4 +134,5 @@ const LocationPage = ({ slug }: LocationPageProps) => {
   );
 };
 
+export const Component = LocationPage;
 export default LocationPage;

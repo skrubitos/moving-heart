@@ -3,8 +3,10 @@ import PageLayout from "@/components/page/PageLayout";
 import PageHero from "@/components/page/PageHero";
 import ContentSection from "@/components/page/ContentSection";
 import CTABand from "@/components/page/CTABand";
+import RelatedLinks from "@/components/page/RelatedLinks";
 import { Check, Info } from "lucide-react";
 import { buildBreadcrumbJsonLd } from "@/lib/seo";
+import { services } from "@/lib/services";
 
 const factors = [
   "Količina i vrsta stvari",
@@ -115,6 +117,18 @@ const Cjenik = () => {
           ))}
         </ul>
       </ContentSection>
+
+      <RelatedLinks
+        eyebrow="Detalji po uslugama"
+        title="Pogledajte konkretne usluge"
+        intro="Cijena ovisi o vrsti posla — pogledajte što sve uključuje pojedina usluga."
+        items={services.map((s) => ({
+          to: s.path,
+          label: s.title,
+          description: s.intro.slice(0, 110) + "…",
+        }))}
+        variant="muted"
+      />
 
       <CTABand
         title="Trebate konkretnu ponudu?"
