@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { ShieldCheck, Clock, Banknote, Heart, User, ChevronDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import kombiImg from "../../slike/kinesis-transport-kombi.jpeg";
@@ -72,13 +71,7 @@ const TrustSection = () => {
       <div className="max-w-7xl mx-auto px-6">
 
         {/* O nama */}
-        <motion.div
-          className="mb-20"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className="mb-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <span className="text-xs font-semibold tracking-widest uppercase text-primary">
@@ -111,16 +104,10 @@ const TrustSection = () => {
               </picture>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* Zašto mi */}
-        <motion.div
-          className="text-center mb-14"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className="text-center mb-14">
           <span className="text-xs font-semibold tracking-widest uppercase text-primary">
             {t("trust.whyBadge")}
           </span>
@@ -130,7 +117,7 @@ const TrustSection = () => {
           <p className="mt-4 text-muted-foreground max-w-xl mx-auto text-sm md:text-base">
             {t("trust.whySubtitle")}
           </p>
-        </motion.div>
+        </div>
 
         {/* Mobile accordion */}
         <div className="sm:hidden space-y-2">
@@ -146,15 +133,11 @@ const TrustSection = () => {
 
         {/* Desktop grid */}
         <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
-          {pointKeys.map((key, i) => {
+          {pointKeys.map((key) => {
             const Icon = pointIcons[key];
             return (
-              <motion.div
+              <div
                 key={key}
-                initial={{ opacity: 0, y: 28 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="group flex flex-col items-center text-center p-6 rounded-2xl border border-border hover:border-primary/20 hover:shadow-md transition-all duration-300 bg-card"
               >
                 <div className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-full border-2 border-border group-hover:border-primary/30 group-hover:bg-primary/5 text-muted-foreground group-hover:text-primary transition-all duration-300">
@@ -162,7 +145,7 @@ const TrustSection = () => {
                 </div>
                 <h3 className="text-base font-bold text-foreground mb-1.5">{t(`trust.points.${key}.title`)}</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">{t(`trust.points.${key}.description`)}</p>
-              </motion.div>
+              </div>
             );
           })}
         </div>

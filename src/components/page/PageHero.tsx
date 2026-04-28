@@ -1,7 +1,6 @@
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Phone, MessageCircle } from "lucide-react";
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { PHONE_HREF, WHATSAPP_URL } from "@/lib/contact";
 import Breadcrumbs, { Crumb } from "./Breadcrumbs";
@@ -39,35 +38,20 @@ const PageHero = ({
         )}
 
         {badge && (
-          <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="inline-flex items-center gap-2 px-3 py-1 mb-5 text-[11px] font-semibold tracking-wider uppercase rounded-full border border-primary/30 text-primary bg-primary/5"
-          >
+          <span className="reveal-up inline-flex items-center gap-2 px-3 py-1 mb-5 text-[11px] font-semibold tracking-wider uppercase rounded-full border border-primary/30 text-primary bg-primary/5">
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
             {badge}
-          </motion.span>
+          </span>
         )}
 
-        <motion.h1
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55 }}
-          className="text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight leading-[1.08] text-foreground"
-        >
+        <h1 className="reveal-up reveal-d1 text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight leading-[1.08] text-foreground">
           {title}
-        </motion.h1>
+        </h1>
 
         {subtitle && (
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.1 }}
-            className="mt-5 text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed"
-          >
+          <p className="reveal-up reveal-d2 mt-5 text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed">
             {subtitle}
-          </motion.p>
+          </p>
         )}
 
         {bullets && bullets.length > 0 && (

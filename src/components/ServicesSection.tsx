@@ -136,13 +136,7 @@ const ServicesSection = () => {
     <section id="services" className="py-24 md:py-32 bg-secondary/50 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-6">
 
-        <motion.div
-          className="text-center mb-14"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className="text-center mb-14">
           <span className="text-xs font-semibold tracking-widest uppercase text-primary">
             {t("services.badge")}
           </span>
@@ -152,31 +146,19 @@ const ServicesSection = () => {
           <p className="mt-4 text-muted-foreground max-w-xl mx-auto text-sm md:text-base">
             {t("services.subtitle")}
           </p>
-        </motion.div>
+        </div>
 
         <MobileCarousel />
 
         <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {serviceKeys.map((key, i) => (
-            <motion.div
-              key={key}
-              initial={{ opacity: 0, y: 36 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.55, delay: i * 0.12, ease: "easeOut" }}
-            >
+          {serviceKeys.map((key) => (
+            <div key={key}>
               <ServiceCard serviceKey={key} />
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        <motion.div
-          className="mt-14 rounded-2xl bg-accent px-8 py-8 md:px-12 md:py-10 flex flex-col sm:flex-row items-center justify-between gap-6"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className="mt-14 rounded-2xl bg-accent px-8 py-8 md:px-12 md:py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
             <p className="text-white/60 text-xs font-semibold uppercase tracking-widest mb-1">
               {t("services.specific")}
@@ -191,7 +173,7 @@ const ServicesSection = () => {
             {t("services.contactUs")}
             <ArrowRight className="h-4 w-4" />
           </button>
-        </motion.div>
+        </div>
 
       </div>
     </section>
