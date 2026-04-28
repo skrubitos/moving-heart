@@ -2,6 +2,12 @@ import { Head } from "vite-react-ssg";
 import { useTranslation } from "react-i18next";
 import { SITE_URL } from "@/lib/contact";
 
+type PreloadImage = {
+  href: string;
+  type?: string;
+  imagesrcset?: string;
+};
+
 type SeoProps = {
   title?: string;
   description?: string;
@@ -11,6 +17,7 @@ type SeoProps = {
   keywords?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   noIndex?: boolean;
+  preloadImages?: PreloadImage[];
 };
 
 const DEFAULT_TITLE = "Selidbe Split i kombi prijevoz | Kinesis Transport";
@@ -27,6 +34,7 @@ const Seo = ({
   keywords,
   jsonLd,
   noIndex = false,
+  preloadImages,
 }: SeoProps) => {
   const { i18n } = useTranslation();
   const lang = i18n.language?.startsWith("en") ? "en" : "hr";
@@ -52,6 +60,17 @@ const Seo = ({
       {noIndex && <meta name="robots" content="noindex, nofollow" />}
 
       <link rel="canonical" href={url} />
+
+      {preloadImages?.map((p, idx) => (
+        <link
+          key={`preload-${idx}`}
+          rel="preload"
+          as="image"
+          href={p.href}
+          {...(p.type ? { type: p.type } : {})}
+          {...(p.imagesrcset ? { imagesrcset: p.imagesrcset } : {})}
+        />
+      ))}
 
       <meta property="og:locale" content={ogLocale} />
       <meta property="og:locale:alternate" content={ogLocaleAlt} />

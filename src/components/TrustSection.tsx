@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { ShieldCheck, Clock, Banknote, Heart, User, ChevronDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import kombiImg from "../../slike/kinesis-transport-kombi.jpeg";
+import kombiAvif from "../../slike/kinesis-transport-kombi.avif";
+import kombiWebp from "../../slike/kinesis-transport-kombi.webp";
 
 type PointKey = "fast" | "flexible" | "fair" | "careful" | "individual";
 
@@ -96,13 +98,17 @@ const TrustSection = () => {
               </p>
             </div>
             <div className="rounded-3xl overflow-hidden border border-border shadow-xl">
-              <img
-                src={kombiImg}
-                alt="Dostavni kombi Kinesis Transport — selidbe, dostava namještaja i kombi prijevoz u Splitu"
-                className="w-full h-56 md:h-72 object-cover object-center"
-                loading="lazy"
-                decoding="async"
-              />
+              <picture>
+                <source srcSet={kombiAvif} type="image/avif" />
+                <source srcSet={kombiWebp} type="image/webp" />
+                <img
+                  src={kombiImg}
+                  alt="Dostavni kombi Kinesis Transport — selidbe, dostava namještaja i kombi prijevoz u Splitu"
+                  className="w-full h-56 md:h-72 object-cover object-center"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
           </div>
         </motion.div>

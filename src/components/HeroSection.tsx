@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { PHONE_HREF, WHATSAPP_URL } from "@/lib/contact";
 import { scrollToSection } from "@/lib/scroll";
 import kombiLogoImg from "../../slike/kinesis-transport-logo.jpeg";
+import kombiLogoAvif from "../../slike/kinesis-transport-logo.avif";
+import kombiLogoWebp from "../../slike/kinesis-transport-logo.webp";
 
 const HeroSection = () => {
   const { t } = useTranslation();
@@ -137,14 +139,18 @@ const HeroSection = () => {
             transition={{ duration: 0.75, delay: 0.28 }}
           >
             <div className="rounded-3xl overflow-hidden border border-border shadow-2xl bg-white">
-              <img
-                src={kombiLogoImg}
-                alt="Kinesis Transport kombi za selidbe i prijevoz u Splitu"
-                className="w-full h-auto object-contain"
-                loading="eager"
-                decoding="async"
-                fetchPriority="high"
-              />
+              <picture>
+                <source srcSet={kombiLogoAvif} type="image/avif" />
+                <source srcSet={kombiLogoWebp} type="image/webp" />
+                <img
+                  src={kombiLogoImg}
+                  alt="Kinesis Transport kombi za selidbe i prijevoz u Splitu"
+                  className="w-full h-auto object-contain"
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
+                />
+              </picture>
               <div className="px-6 py-3.5 bg-secondary/60 border-t border-border flex items-center gap-2.5">
                 <span className="w-2 h-2 rounded-full bg-green-500 flex-shrink-0" />
                 <span className="text-xs font-semibold text-foreground">{t("hero.vehicleLabel")}</span>
