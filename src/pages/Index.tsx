@@ -7,6 +7,8 @@ import Footer from "@/components/Footer";
 import StickyContact from "@/components/StickyContact";
 import BottomNav from "@/components/BottomNav";
 import Seo from "@/components/Seo";
+import heroLogoAvif from "../../slike/kinesis-transport-logo.avif";
+import heroLogoWebp from "../../slike/kinesis-transport-logo.webp";
 import {
   PHONE_DISPLAY,
   EMAIL,
@@ -66,6 +68,10 @@ const Index = () => {
         keywords="selidbe Split, kombi prijevoz Split, dostava namještaja Split, prijevoz Split, selidbe Solin, selidbe Kaštela, selidbe Trogir, prijevoz paketa Split"
         path="/"
         jsonLd={homeJsonLd}
+        preloadImages={[
+          { href: heroLogoAvif, type: "image/avif" },
+          { href: heroLogoWebp, type: "image/webp" },
+        ]}
       />
       <Navbar />
       <HeroSection />

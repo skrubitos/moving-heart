@@ -11,6 +11,7 @@ const Footer = () => {
   const company = [
     { label: t("nav.whyUs"), to: "/o-nama" },
     { label: t("nav.contact"), to: "/kontakt" },
+    { label: "Vozni park", to: "/vozni-park" },
     { label: "FAQ", to: "/faq" },
     { label: "Cjenik", to: "/cjenik" },
     { label: "Uvjeti poslovanja", to: "/uvjeti-poslovanja" },

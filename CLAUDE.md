@@ -218,8 +218,12 @@ Završeno kroz Fazu 1:
 - ✅ Per-service FAQ na `/selidbe`, `/dostava-namjestaja`, `/prijevoz-paketa` (FAQPage JSON-LD)
 - ✅ `/cjenik` s 3 okvirna paketa i faktorima
 
+Završeno kroz commit koji prati ovaj dokument:
+- ✅ **Vozni park stranica** (`/vozni-park`) — `src/pages/VozniPark.tsx`. Hero + sliku kombija (AVIF/WebP/JPEG `<picture>`) + 6 specifikacija (tip vozila, volumen, nosivost, pristup, zaštita robe, tehnička ispravnost) + RelatedLinks na sve servise + CTABand. Linkana iz Navbar dropdowna i Footera, dodana u `public/sitemap.xml`. Vlasnik može kasnije zamijeniti placeholder fotku i dopuniti točne dimenzije/nosivost — struktura je spremna.
+
 Preostalo:
-- Vozni park stranica (s pravim fotkama, dimenzije, kapacitet)
+- Realistične fotke kombija s različitih kuteva (vlasnik) za zamjenu placeholder slike
+- Točne specifikacije vozila (volumen, nosivost u kg) — vlasnik popunjava u `VozniPark.tsx` `specs` arrayu
 - Recenzije (Google reviews widget kad GBP bude verificiran)
 - Blog — **odbijeno za sada** (po dogovoru s vlasnikom)
 - **Google Business Profile** — u izradi; kad se verificira, dodati URL u `sameAs` JSON-LD-a, footer i ovaj dokument
@@ -253,11 +257,20 @@ Implementirano u commit-u koji prati ovaj dokument:
 - `npm run build` — SSG + kompresija (default)
 - `npm run build:csr` — SPA fallback bez SSG (samo Vite)
 
+Završeno kroz commit koji prati ovaj dokument:
+- ✅ **WebP / AVIF varijante slika** preko `sharp` (^0.34.5 devDependency) + `scripts/generate-webp.mjs`:
+  - Skripta čita sve `.jpeg/.jpg/.png` u `slike/` i generira `.webp` (quality 82) + `.avif` (quality 60) verzije.
+  - `kombi.jpeg`: 215.5 → 143.4 KB WebP / 110.0 KB AVIF (~50% smanjenje s AVIF-om).
+  - `logo.jpeg`: 72.5 → 45.5 KB WebP / 28.9 KB AVIF.
+  - `HeroSection.tsx` i `TrustSection.tsx` koriste `<picture>` s `<source srcSet=... type="image/avif">` + `<source type="image/webp">` + `<img>` JPEG fallback — browser bira najbolji format koji podržava.
+- ✅ **`<link rel="preload">` za hero sliku**:
+  - `Seo` komponenta dobila novi prop `preloadImages?: { href, type, imagesrcset }[]`.
+  - `Index.tsx` preloadira AVIF i WebP varijante hero loga (browser preuzme najbolju koju podržava prije JS-a se izvrši).
+  - Verificirano u SSR-iranom `dist/index.html`: `<link data-rh="true" rel="preload" as="image" href="/assets/...avif" type="image/avif">`.
+
 Preostalo:
-- WebP / AVIF varijante slika + `<picture>` element (potrebno `sharp` ili `imagetools`)
 - Pravi `og-image.jpg` 1200×630 (trenutno se referencira URL koji **još ne postoji**)
 - LCP mjerenje u produkciji (Lighthouse / WebPageTest nakon deploya)
-- `<link rel="preload">` za hero sliku (pomaže LCP)
 
 ### ⏳ Faza 5 — Lokalni SEO i izvan stranice (preostalo)
 

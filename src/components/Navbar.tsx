@@ -85,6 +85,15 @@ const Navbar = () => {
                         Cjenik
                       </Link>
                     </li>
+                    <li>
+                      <Link
+                        to="/vozni-park"
+                        onClick={() => setOpenDropdown(null)}
+                        className="block px-3 py-2 rounded-lg text-sm font-semibold text-primary hover:bg-primary/5 transition-colors"
+                      >
+                        Vozni park
+                      </Link>
+                    </li>
                   </ul>
                 </motion.div>
               )}
@@ -212,6 +221,15 @@ const Navbar = () => {
                       className="block text-sm font-semibold text-primary py-1.5 px-2 rounded hover:bg-primary/5 transition-colors"
                     >
                       Cjenik
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/vozni-park"
+                      onClick={() => setOpen(false)}
+                      className="block text-sm font-semibold text-primary py-1.5 px-2 rounded hover:bg-primary/5 transition-colors"
+                    >
+                      Vozni park
                     </Link>
                   </li>
                 </ul>

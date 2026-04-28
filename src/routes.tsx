@@ -36,6 +36,11 @@ export const routes: RouteRecord[] = [
         lazy: () => import("./pages/UvjetiPoslovanja"),
         entry: "src/pages/UvjetiPoslovanja.tsx",
       },
+      {
+        path: "vozni-park",
+        lazy: () => import("./pages/VozniPark"),
+        entry: "src/pages/VozniPark.tsx",
+      },
       ...services.map<RouteRecord>((s) => ({
         path: s.slug,
         entry: "src/pages/ServicePage.tsx",
