@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Truck, Home, Package, MoreHorizontal, ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { scrollToSection } from "@/lib/scroll";
 
 const AUTOPLAY_INTERVAL = 4000;
 
@@ -31,14 +30,13 @@ const ServiceCard = ({ serviceKey }: { serviceKey: ServiceKey }) => {
       </span>
       <h3 className="text-xl font-bold text-foreground mb-2">{t(`services.items.${serviceKey}.title`)}</h3>
       <p className="text-sm text-muted-foreground leading-relaxed flex-1">{t(`services.items.${serviceKey}.description`)}</p>
-      <button
-        type="button"
+      <a
+        href="#contact"
         className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-primary group-hover:gap-3 transition-all duration-300"
-        onClick={() => scrollToSection("contact")}
       >
         {t("services.cta")}
         <ArrowRight className="h-4 w-4" />
-      </button>
+      </a>
     </div>
   );
 };
@@ -106,7 +104,7 @@ const MobileCarousel = () => {
             key={current}
             custom={direction}
             variants={variants}
-            initial="enter"
+            initial={false}
             animate="center"
             exit="exit"
             transition={{ duration: 0.35, ease: "easeInOut" }}
@@ -166,14 +164,13 @@ const ServicesSection = () => {
             </p>
             <h3 className="text-xl font-bold text-white">{t("services.adapt")}</h3>
           </div>
-          <button
-            type="button"
-            onClick={() => scrollToSection("contact")}
+          <a
+            href="#contact"
             className="flex-shrink-0 inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-primary text-white font-bold text-sm shadow-lg shadow-primary/30 hover:bg-primary/90 hover:shadow-primary/50 transition-all duration-300 hover:scale-[1.02]"
           >
             {t("services.contactUs")}
             <ArrowRight className="h-4 w-4" />
-          </button>
+          </a>
         </div>
 
       </div>

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Home, List, Info, FileText } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { scrollToSection } from "@/lib/scroll";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 type SectionId = "hero" | "services" | "trust" | "contact";
@@ -38,34 +37,27 @@ const BottomNav = () => {
     };
   }, []);
 
-  const handleNav = (id: SectionId) => {
-    if (id === "hero") window.scrollTo({ top: 0, behavior: "smooth" });
-    else scrollToSection(id);
-  };
-
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 sm:hidden h-16 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.08)] flex items-center justify-around px-1">
       {navItems.map(({ id, label, icon: Icon }) => {
         const isActive = active === id;
         return (
-          <button
+          <a
             key={id}
-            type="button"
-            onClick={() => handleNav(id)}
+            href={`#${id}`}
             className={`flex flex-col items-center justify-center gap-0.5 flex-1 h-full transition-colors duration-200 ${
               isActive ? "text-primary" : "text-muted-foreground"
             }`}
           >
             <Icon className="h-5 w-5" />
             <span className="text-[10px] font-semibold leading-none">{label}</span>
-          </button>
+          </a>
         );
       })}
 
       {/* CTA */}
-      <button
-        type="button"
-        onClick={() => scrollToSection("contact")}
+      <a
+        href="#contact"
         className="flex flex-col items-center justify-center flex-1 h-full"
       >
         <div
@@ -76,7 +68,7 @@ const BottomNav = () => {
           <FileText className="h-4 w-4 text-white" />
           <span className="text-[11px] font-bold text-white">{t("bottomNav.quote")}</span>
         </div>
-      </button>
+      </a>
 
       {/* Language switcher — vertical flags */}
       <div className="flex flex-col items-center justify-center flex-shrink-0 px-2 h-full">
