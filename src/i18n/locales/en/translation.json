@@ -6,7 +6,9 @@
     "cta": "Get a Quote",
     "locations": "Locations",
     "faq": "FAQ",
-    "pricing": "Pricing"
+    "pricing": "Pricing",
+    "vehicleFleet": "Vehicle Fleet",
+    "menu": "Menu"
   },
   "hero": {
     "badge": "Split & surroundings · Available 7 days",
@@ -28,6 +30,7 @@
     "specific": "Need something specific?",
     "adapt": "We adapt to your needs.",
     "contactUs": "Contact Us",
+    "cardLabel": "Card {{n}}",
     "items": {
       "moving": {
         "title": "Moving",
@@ -86,7 +89,10 @@
     "messagePlaceholder": "Describe what you need transported...",
     "submit": "Send free enquiry",
     "toastTitle": "Enquiry sent!",
-    "toastDesc": "We will get back to you as soon as possible."
+    "toastDesc": "We will get back to you as soon as possible.",
+    "sending": "Sending...",
+    "errorTitle": "Error",
+    "errorDesc": "Sending failed. Please try again."
   },
   "footer": {
     "quickLinks": "Quick links",
@@ -96,7 +102,12 @@
     "city": "Split, Croatia",
     "address": "Put Brodarice 3, 21000 Split",
     "oibLabel": "VAT ID",
-    "copyright": "© 2026 Kinesis Transport d.o.o. All rights reserved."
+    "copyright": "© 2026 Kinesis Transport d.o.o. All rights reserved.",
+    "description": "Moving, furniture delivery and van transport in Split and surroundings.",
+    "ourServices": "Our Services",
+    "locationsTitle": "Locations",
+    "company": "Company",
+    "terms": "Terms of Service"
   },
   "bottomNav": {
     "home": "Home",
