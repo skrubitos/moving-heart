@@ -44,6 +44,7 @@ const ServiceCard = ({ serviceKey }: { serviceKey: ServiceKey }) => {
 };
 
 const MobileCarousel = () => {
+  const { t } = useTranslation();
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
   const autoplayRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -119,7 +120,7 @@ const MobileCarousel = () => {
           <button
             key={i}
             type="button"
-            aria-label={`Kartica ${i + 1}`}
+            aria-label={t("services.cardLabel", { n: i + 1 })}
             onClick={() => { goTo(i, i > current ? 1 : -1); userSwiped.current = true; }}
             className={`h-2 rounded-full transition-all duration-300 ${i === current ? "w-6 bg-primary" : "w-2 bg-border hover:bg-primary/40"}`}
           />

@@ -11,10 +11,10 @@ const Footer = () => {
   const company = [
     { label: t("nav.whyUs"), to: "/o-nama" },
     { label: t("nav.contact"), to: "/kontakt" },
-    { label: "Vozni park", to: "/vozni-park" },
-    { label: "FAQ", to: "/faq" },
-    { label: "Cjenik", to: "/cjenik" },
-    { label: "Uvjeti poslovanja", to: "/uvjeti-poslovanja" },
+    { label: t("nav.vehicleFleet"), to: "/vozni-park" },
+    { label: t("nav.faq"), to: "/faq" },
+    { label: t("nav.pricing"), to: "/cjenik" },
+    { label: t("footer.terms"), to: "/uvjeti-poslovanja" },
   ];
 
   const featuredLocations = locations.slice(0, 6);
@@ -28,7 +28,7 @@ const Footer = () => {
           <div className="col-span-2 md:col-span-1">
             <h3 className="text-base font-bold text-white">Kinesis Transport</h3>
             <p className="mt-3 text-sm opacity-60 leading-relaxed">
-              Selidbe, dostava namještaja i kombi prijevoz u Splitu i okolici.
+              {t("footer.description")}
             </p>
             <ul className="mt-5 space-y-2.5">
               <li>
@@ -61,7 +61,7 @@ const Footer = () => {
 
           <div>
             <h4 className="text-xs font-bold uppercase tracking-widest mb-4 text-white/60">
-              Naše usluge
+              {t("footer.ourServices")}
             </h4>
             <ul className="space-y-2">
               {services.map((s) => (
@@ -79,7 +79,7 @@ const Footer = () => {
 
           <div>
             <h4 className="text-xs font-bold uppercase tracking-widest mb-4 text-white/60">
-              Lokacije
+              {t("footer.locationsTitle")}
             </h4>
             <ul className="space-y-2">
               {featuredLocations.map((l) => (
@@ -97,7 +97,7 @@ const Footer = () => {
 
           <div>
             <h4 className="text-xs font-bold uppercase tracking-widest mb-4 text-white/60">
-              Tvrtka
+              {t("footer.company")}
             </h4>
             <ul className="space-y-2">
               {company.map((item) => (

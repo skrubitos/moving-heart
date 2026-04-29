@@ -39,7 +39,7 @@ const ContactSection = () => {
         setFormData({ name: "", phone: "", message: "" });
       })
       .catch(() => {
-        toast({ title: "Greška", description: "Slanje nije uspjelo. Pokušajte ponovo." });
+        toast({ title: t("contact.errorTitle"), description: t("contact.errorDesc") });
       })
       .finally(() => setSending(false));
   };
@@ -145,7 +145,7 @@ const ContactSection = () => {
                 className="w-full rounded-xl py-5 font-bold shadow-md shadow-primary/20 transition-all duration-300 hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 <Send className={`mr-2 h-4 w-4 ${sending ? "animate-pulse" : ""}`} />
-                {sending ? "Slanje..." : t("contact.submit")}
+                {sending ? t("contact.sending") : t("contact.submit")}
               </Button>
             </form>
           </div>

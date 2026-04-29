@@ -6,7 +6,9 @@
     "cta": "Zatražite ponudu",
     "locations": "Lokacije",
     "faq": "FAQ",
-    "pricing": "Cjenik"
+    "pricing": "Cjenik",
+    "vehicleFleet": "Vozni park",
+    "menu": "Izbornik"
   },
   "hero": {
     "badge": "Split i okolica · Dostupni 7 dana",
@@ -28,6 +30,7 @@
     "specific": "Trebate nešto specifično?",
     "adapt": "Prilagođavamo se vašim potrebama.",
     "contactUs": "Kontaktirajte nas",
+    "cardLabel": "Kartica {{n}}",
     "items": {
       "moving": {
         "title": "Selidbe",
@@ -86,7 +89,10 @@
     "messagePlaceholder": "Opišite što trebate prevesti...",
     "submit": "Pošalji besplatni upit",
     "toastTitle": "Upit poslan!",
-    "toastDesc": "Javit ćemo vam se u najkraćem mogućem roku."
+    "toastDesc": "Javit ćemo vam se u najkraćem mogućem roku.",
+    "sending": "Slanje...",
+    "errorTitle": "Greška",
+    "errorDesc": "Slanje nije uspjelo. Pokušajte ponovo."
   },
   "footer": {
     "quickLinks": "Brzi linkovi",
@@ -96,7 +102,12 @@
     "city": "Split, Hrvatska",
     "address": "Put Brodarice 3, 21000 Split",
     "oibLabel": "OIB",
-    "copyright": "© 2026 Kinesis Transport d.o.o. Sva prava pridržana."
+    "copyright": "© 2026 Kinesis Transport d.o.o. Sva prava pridržana.",
+    "description": "Selidbe, dostava namještaja i kombi prijevoz u Splitu i okolici.",
+    "ourServices": "Naše usluge",
+    "locationsTitle": "Lokacije",
+    "company": "Tvrtka",
+    "terms": "Uvjeti poslovanja"
   },
   "bottomNav": {
     "home": "Početna",

@@ -82,7 +82,7 @@ const Navbar = () => {
                         onClick={() => setOpenDropdown(null)}
                         className="block px-3 py-2 rounded-lg text-sm font-semibold text-primary hover:bg-primary/5 transition-colors"
                       >
-                        Cjenik
+                        {t("nav.pricing")}
                       </Link>
                     </li>
                     <li>
@@ -91,7 +91,7 @@ const Navbar = () => {
                         onClick={() => setOpenDropdown(null)}
                         className="block px-3 py-2 rounded-lg text-sm font-semibold text-primary hover:bg-primary/5 transition-colors"
                       >
-                        Vozni park
+                        {t("nav.vehicleFleet")}
                       </Link>
                     </li>
                   </ul>
@@ -110,7 +110,7 @@ const Navbar = () => {
               className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               onClick={() => setOpenDropdown(openDropdown === "locations" ? null : "locations")}
             >
-              Lokacije
+              {t("nav.locations")}
               <ChevronDown className="h-3.5 w-3.5" />
             </button>
             <AnimatePresence>
@@ -156,7 +156,7 @@ const Navbar = () => {
             to="/faq"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            FAQ
+            {t("nav.faq")}
           </Link>
 
           <Link
@@ -181,7 +181,7 @@ const Navbar = () => {
           type="button"
           className="md:hidden text-foreground p-1.5 rounded-lg hover:bg-secondary transition-colors"
           onClick={() => setOpen(!open)}
-          aria-label="Izbornik"
+          aria-label={t("nav.menu")}
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -220,7 +220,7 @@ const Navbar = () => {
                       onClick={() => setOpen(false)}
                       className="block text-sm font-semibold text-primary py-1.5 px-2 rounded hover:bg-primary/5 transition-colors"
                     >
-                      Cjenik
+                      {t("nav.pricing")}
                     </Link>
                   </li>
                   <li>
@@ -229,7 +229,7 @@ const Navbar = () => {
                       onClick={() => setOpen(false)}
                       className="block text-sm font-semibold text-primary py-1.5 px-2 rounded hover:bg-primary/5 transition-colors"
                     >
-                      Vozni park
+                      {t("nav.vehicleFleet")}
                     </Link>
                   </li>
                 </ul>
@@ -237,7 +237,7 @@ const Navbar = () => {
 
               <details className="group">
                 <summary className="flex items-center justify-between text-sm font-semibold text-foreground py-2.5 px-3 rounded-lg hover:bg-secondary cursor-pointer list-none">
-                  Lokacije
+                  {t("nav.locations")}
                   <ChevronDown className="h-4 w-4 transition-transform group-open:rotate-180" />
                 </summary>
                 <ul className="mt-1 ml-3 border-l border-border pl-3 flex flex-col gap-0.5">
@@ -267,7 +267,7 @@ const Navbar = () => {
                 onClick={() => setOpen(false)}
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2.5 px-3 rounded-lg hover:bg-secondary"
               >
-                FAQ
+                {t("nav.faq")}
               </Link>
               <Link
                 to="/kontakt"
