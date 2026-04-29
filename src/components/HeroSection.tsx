@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { ArrowRight, Phone, CheckCircle2, MessageCircle } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
@@ -44,42 +43,22 @@ const HeroSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[calc(100vh-9rem)]">
 
           <div className="flex flex-col justify-center">
-            <motion.span
-              className="inline-flex items-center gap-2 self-start px-4 py-1.5 mb-8 text-xs font-semibold tracking-wider uppercase rounded-full border border-primary/30 text-primary bg-primary/5"
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55 }}
-            >
+            <span className="reveal-up reveal-d0 inline-flex items-center gap-2 self-start px-4 py-1.5 mb-8 text-xs font-semibold tracking-wider uppercase rounded-full border border-primary/30 text-primary bg-primary/5">
               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
               {t("hero.badge")}
-            </motion.span>
+            </span>
 
-            <motion.h1
-              className="text-5xl sm:text-6xl lg:text-[3.5rem] xl:text-[4rem] font-extrabold tracking-tight leading-[1.06] text-foreground"
-              initial={{ opacity: 0, y: 28 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, delay: 0.1 }}
-            >
+            <h1 className="reveal-up reveal-d1 text-5xl sm:text-6xl lg:text-[3.5rem] xl:text-[4rem] font-extrabold tracking-tight leading-[1.06] text-foreground">
               {t("hero.title1")}
               <br />
               <span className="text-gradient-animated">{t("hero.title2")}</span>
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              className="mt-5 text-base md:text-lg text-muted-foreground max-w-md leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, delay: 0.22 }}
-            >
+            <p className="reveal-up reveal-d2 mt-5 text-base md:text-lg text-muted-foreground max-w-md leading-relaxed">
               {t("hero.subtitle")}
-            </motion.p>
+            </p>
 
-            <motion.div
-              className="mt-6"
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, delay: 0.32 }}
-            >
+            <div className="reveal-up reveal-d3 mt-6">
               <ul className="space-y-2.5">
                 {trustBullets.map((point) => (
                   <li key={point} className="flex items-start gap-3 text-sm font-medium text-foreground">
@@ -88,14 +67,9 @@ const HeroSection = () => {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="mt-10 flex flex-col sm:flex-row gap-3"
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, delay: 0.42 }}
-            >
+            <div className="reveal-up reveal-d4 mt-10 flex flex-col sm:flex-row gap-3">
               <Button
                 size="lg"
                 className="group px-8 py-6 text-base font-bold rounded-xl shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 hover:scale-[1.02]"
@@ -129,15 +103,10 @@ const HeroSection = () => {
                   </a>
                 </Button>
               </div>
-            </motion.div>
+            </div>
           </div>
 
-          <motion.div
-            className="flex flex-col gap-4"
-            initial={{ opacity: 0, x: 36 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.75, delay: 0.28 }}
-          >
+          <div className="reveal-right reveal-d2 flex flex-col gap-4">
             <div className="rounded-3xl overflow-hidden border border-border shadow-2xl bg-white">
               <picture>
                 <source srcSet={kombiLogoAvif} type="image/avif" />
@@ -156,7 +125,7 @@ const HeroSection = () => {
                 <span className="text-xs font-semibold text-foreground">{t("hero.vehicleLabel")}</span>
               </div>
             </div>
-          </motion.div>
+          </div>
 
         </div>
       </div>
