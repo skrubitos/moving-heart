@@ -2,7 +2,6 @@ import { ArrowRight, Phone, CheckCircle2, MessageCircle } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { PHONE_HREF, WHATSAPP_URL } from "@/lib/contact";
-import { scrollToSection } from "@/lib/scroll";
 import kombiLogoImg from "../../slike/kinesis-transport-logo.jpeg";
 import kombiLogoAvif from "../../slike/kinesis-transport-logo.avif";
 import kombiLogoWebp from "../../slike/kinesis-transport-logo.webp";
@@ -17,7 +16,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
+    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-background scroll-mt-20">
       {/* Base grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-50" />
 
@@ -71,12 +70,14 @@ const HeroSection = () => {
 
             <div className="reveal-up reveal-d4 mt-10 flex flex-col sm:flex-row gap-3">
               <Button
+                asChild
                 size="lg"
                 className="group px-8 py-6 text-base font-bold rounded-xl shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 hover:scale-[1.02]"
-                onClick={() => scrollToSection("contact")}
               >
-                {t("hero.ctaPrimary")}
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                <a href="#contact">
+                  {t("hero.ctaPrimary")}
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </a>
               </Button>
 
               <div className="flex gap-3">
