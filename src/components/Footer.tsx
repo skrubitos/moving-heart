@@ -60,7 +60,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest mb-4 opacity-50">
+            <h4 className="text-xs font-bold uppercase tracking-widest mb-4 text-white/60">
               Naše usluge
             </h4>
             <ul className="space-y-2">
@@ -68,7 +68,7 @@ const Footer = () => {
                 <li key={s.slug}>
                   <Link
                     to={s.path}
-                    className="text-sm opacity-65 hover:opacity-100 hover:text-primary transition-all"
+                    className="text-sm text-white/85 hover:text-primary transition-colors"
                   >
                     {s.navLabel}
                   </Link>
@@ -78,7 +78,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest mb-4 opacity-50">
+            <h4 className="text-xs font-bold uppercase tracking-widest mb-4 text-white/60">
               Lokacije
             </h4>
             <ul className="space-y-2">
@@ -86,7 +86,7 @@ const Footer = () => {
                 <li key={l.slug}>
                   <Link
                     to={l.path}
-                    className="text-sm opacity-65 hover:opacity-100 hover:text-primary transition-all"
+                    className="text-sm text-white/85 hover:text-primary transition-colors"
                   >
                     {l.navLabel}
                   </Link>
@@ -96,7 +96,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest mb-4 opacity-50">
+            <h4 className="text-xs font-bold uppercase tracking-widest mb-4 text-white/60">
               Tvrtka
             </h4>
             <ul className="space-y-2">
@@ -104,7 +104,7 @@ const Footer = () => {
                 <li key={item.to}>
                   <Link
                     to={item.to}
-                    className="text-sm opacity-65 hover:opacity-100 hover:text-primary transition-all"
+                    className="text-sm text-white/85 hover:text-primary transition-colors"
                   >
                     {item.label}
                   </Link>
