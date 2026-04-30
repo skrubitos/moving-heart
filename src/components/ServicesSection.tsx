@@ -99,12 +99,12 @@ const MobileCarousel = () => {
   return (
     <div className="sm:hidden">
       <div className="relative overflow-hidden" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
-        <AnimatePresence mode="wait" custom={direction}>
+        <AnimatePresence mode="wait" custom={direction} initial={false}>
           <motion.div
             key={current}
             custom={direction}
             variants={variants}
-            initial={false}
+            initial="enter"
             animate="center"
             exit="exit"
             transition={{ duration: 0.35, ease: "easeInOut" }}
