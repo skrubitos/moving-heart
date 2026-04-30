@@ -15,7 +15,7 @@ type LocationPageProps = { slug: string };
 const LocationPage = ({ slug }: LocationPageProps) => {
   const location = getLocationBySlug(slug);
 
-  if (!location) return <Navigate to="/404" replace />;
+  if (!location) return <Navigate to="/" replace />;
 
   const breadcrumbs = [{ name: location.navLabel, path: location.path }];
 

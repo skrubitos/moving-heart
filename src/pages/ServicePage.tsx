@@ -16,7 +16,7 @@ type ServicePageProps = { slug: string };
 const ServicePage = ({ slug }: ServicePageProps) => {
   const service = getServiceBySlug(slug);
 
-  if (!service) return <Navigate to="/404" replace />;
+  if (!service) return <Navigate to="/" replace />;
 
   const breadcrumbs = [{ name: service.title, path: service.path }];
 
