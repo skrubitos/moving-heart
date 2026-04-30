@@ -1,4 +1,3 @@
-import React from "react";
 import type { RouteRecord } from "vite-react-ssg";
 import Layout from "./Layout";
 import Index from "./pages/Index";
@@ -42,32 +41,16 @@ export const routes: RouteRecord[] = [
         lazy: () => import("./pages/VozniPark"),
         entry: "src/pages/VozniPark.tsx",
       },
-      ...services.map<RouteRecord>((s) => {
-        const slug = s.slug;
-        let Component: React.ComponentType | undefined;
-        return {
-          path: slug,
-          entry: "src/pages/ServicePage.tsx",
-          lazy: async () => {
-            const mod = await import("./pages/ServicePage");
-            Component ??= () => <mod.default slug={slug} />;
-            return { Component };
-          },
-        };
-      }),
-      ...locations.map<RouteRecord>((l) => {
-        const slug = l.slug;
-        let Component: React.ComponentType | undefined;
-        return {
-          path: slug,
-          entry: "src/pages/LocationPage.tsx",
-          lazy: async () => {
-            const mod = await import("./pages/LocationPage");
-            Component ??= () => <mod.default slug={slug} />;
-            return { Component };
-          },
-        };
-      }),
+      ...services.map<RouteRecord>((s) => ({
+        path: s.slug,
+        entry: "src/pages/ServicePage.tsx",
+        lazy: () => import("./pages/ServicePage"),
+      })),
+      ...locations.map<RouteRecord>((l) => ({
+        path: l.slug,
+        entry: "src/pages/LocationPage.tsx",
+        lazy: () => import("./pages/LocationPage"),
+      })),
       {
         path: "*",
         lazy: () => import("./pages/NotFound"),
