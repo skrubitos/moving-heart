@@ -18,13 +18,13 @@ const HeroSection = () => {
   return (
     <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-background scroll-mt-20">
       {/* Base grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-50" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-50 pointer-events-none" />
 
       {/* Amber dot pattern overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(#fef3c7_1.5px,transparent_1.5px)] bg-[size:28px_28px] opacity-50 pointer-events-none" />
 
       {/* Right panel tint */}
-      <div className="absolute inset-y-0 right-0 w-1/2 bg-secondary/40 [clip-path:polygon(8%_0%,100%_0%,100%_100%,0%_100%)] hidden lg:block" />
+      <div className="absolute inset-y-0 right-0 w-1/2 bg-secondary/40 [clip-path:polygon(8%_0%,100%_0%,100%_100%,0%_100%)] hidden lg:block pointer-events-none" />
 
       {/* Blob top-left */}
       <div className="hidden lg:block absolute -top-24 -left-24 w-[300px] h-[300px] rounded-full bg-[#f97316] opacity-[0.08] blur-[60px] pointer-events-none z-0" />

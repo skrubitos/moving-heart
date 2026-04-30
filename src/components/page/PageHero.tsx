@@ -26,7 +26,7 @@ const PageHero = ({
 }: PageHeroProps) => {
   return (
     <section className="relative overflow-hidden bg-background pt-28 pb-12 md:pt-36 md:pb-20">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-40" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-40 pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(#fef3c7_1.5px,transparent_1.5px)] bg-[size:28px_28px] opacity-40 pointer-events-none" />
       <div className="hidden lg:block absolute -top-20 -left-20 w-[260px] h-[260px] rounded-full bg-[#f97316] opacity-[0.07] blur-[60px] pointer-events-none" />
 
