@@ -42,15 +42,20 @@ const Navbar = () => {
         </Link>
 
         <div className="hidden md:flex items-center gap-6">
-          <div
-            className="relative"
-            onMouseEnter={() => setOpenDropdown("services")}
-            onMouseLeave={() => setOpenDropdown(null)}
-          >
+          {/* Invisible backdrop — closes any open dropdown when tapping outside */}
+          {openDropdown && (
+            <div
+              className="fixed inset-0 z-40"
+              onClick={() => setOpenDropdown(null)}
+            />
+          )}
+
+          <div className="relative z-50" onMouseLeave={() => setOpenDropdown(null)}>
             <button
               type="button"
               className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              onClick={() => setOpenDropdown(openDropdown === "services" ? null : "services")}
+              onClick={() => setOpenDropdown("services")}
+              onMouseEnter={() => setOpenDropdown("services")}
             >
               {t("nav.services")}
               <ChevronDown className="h-3.5 w-3.5" />
@@ -100,15 +105,12 @@ const Navbar = () => {
             </AnimatePresence>
           </div>
 
-          <div
-            className="relative"
-            onMouseEnter={() => setOpenDropdown("locations")}
-            onMouseLeave={() => setOpenDropdown(null)}
-          >
+          <div className="relative z-50" onMouseLeave={() => setOpenDropdown(null)}>
             <button
               type="button"
               className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              onClick={() => setOpenDropdown(openDropdown === "locations" ? null : "locations")}
+              onClick={() => setOpenDropdown("locations")}
+              onMouseEnter={() => setOpenDropdown("locations")}
             >
               {t("nav.locations")}
               <ChevronDown className="h-3.5 w-3.5" />
