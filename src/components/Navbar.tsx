@@ -30,6 +30,13 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-lg border-b border-border">
+      {/* Backdrop za desktop dropdown — izvan hidden md:flex da ne bi imao iOS Safari fixed-inside-display-none bug */}
+      {openDropdown && (
+        <div
+          className="fixed inset-0 z-40 hidden md:block"
+          onClick={() => setOpenDropdown(null)}
+        />
+      )}
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
 
         <Link to="/" className="flex items-center gap-2.5 group">
@@ -42,13 +49,6 @@ const Navbar = () => {
         </Link>
 
         <div className="hidden md:flex items-center gap-6">
-          {/* Invisible backdrop — closes any open dropdown when tapping outside */}
-          {openDropdown && (
-            <div
-              className="fixed inset-0 z-40"
-              onClick={() => setOpenDropdown(null)}
-            />
-          )}
 
           <div className="relative z-50" onMouseLeave={() => setOpenDropdown(null)}>
             <button
@@ -183,6 +183,7 @@ const Navbar = () => {
           type="button"
           className="md:hidden text-foreground p-1.5 rounded-lg hover:bg-secondary transition-colors"
           onClick={() => setOpen(!open)}
+          style={{ touchAction: "manipulation" }}
           aria-label={t("nav.menu")}
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -190,7 +191,7 @@ const Navbar = () => {
       </div>
 
       {open && (
-        <div className="md:hidden border-b border-border bg-background">
+        <div className="border-b border-border bg-background">
           <div className="px-6 py-4 flex flex-col gap-1 max-h-[80vh] overflow-y-auto">
               <details className="group">
                 <summary className="flex items-center justify-between text-sm font-semibold text-foreground py-2.5 px-3 rounded-lg hover:bg-secondary cursor-pointer list-none">
