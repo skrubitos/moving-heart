@@ -190,13 +190,13 @@ const Navbar = () => {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.22 }}
-            className="md:hidden overflow-hidden border-b border-border bg-background"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="md:hidden border-b border-border bg-background"
           >
-            <div className="px-6 py-4 flex flex-col gap-1 max-h-[70vh] overflow-y-auto">
+            <div className="px-6 py-4 flex flex-col gap-1 max-h-[80vh] overflow-y-auto">
               <details className="group">
                 <summary className="flex items-center justify-between text-sm font-semibold text-foreground py-2.5 px-3 rounded-lg hover:bg-secondary cursor-pointer list-none">
                   {t("nav.services")}
