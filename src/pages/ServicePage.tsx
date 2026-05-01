@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import Seo from "@/components/Seo";
 import PageLayout from "@/components/page/PageLayout";
 import PageHero from "@/components/page/PageHero";
@@ -11,9 +11,9 @@ import { getServiceBySlug, services } from "@/lib/services";
 import { locations } from "@/lib/locations";
 import { buildBreadcrumbJsonLd, buildFaqJsonLd, buildServiceJsonLd } from "@/lib/seo";
 
-type ServicePageProps = { slug: string };
-
-const ServicePage = ({ slug }: ServicePageProps) => {
+const ServicePage = () => {
+  const { pathname } = useLocation();
+  const slug = pathname.replace(/^\//, "");
   const service = getServiceBySlug(slug);
 
   if (!service) return <Navigate to="/" replace />;
