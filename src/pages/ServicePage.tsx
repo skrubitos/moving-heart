@@ -39,6 +39,7 @@ const ServicePage = () => {
 
   const relatedLocations = locations
     .filter((l) => !l.isIsland)
+    .filter((l, i, arr) => arr.findIndex((x) => x.city === l.city) === i)
     .slice(0, 6)
     .map((l) => ({
       to: l.path,

@@ -36,6 +36,7 @@ const LocationPage = () => {
 
   const siblingLocations = locations
     .filter((l) => l.slug !== location.slug && l.isIsland === location.isIsland)
+    .filter((l, i, arr) => arr.findIndex((x) => x.city === l.city) === i)
     .slice(0, 6)
     .map((l) => ({
       to: l.path,
