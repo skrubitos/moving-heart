@@ -23,7 +23,7 @@ type SeoProps = {
 const DEFAULT_TITLE = "Selidbe Split i kombi prijevoz | Kinesis Transport";
 const DEFAULT_DESCRIPTION =
   "Kinesis Transport — selidbe, kombi prijevoz i dostava namještaja u Splitu i okolici. Brzo, sigurno, korektne cijene. Besplatna procjena.";
-const DEFAULT_IMAGE = `${SITE_URL}/og-image.jpg`;
+const DEFAULT_IMAGE = `${SITE_URL}/slike/kinesis-transport-kombi.jpeg`;
 
 const Seo = ({
   title,
@@ -60,6 +60,9 @@ const Seo = ({
       {noIndex && <meta name="robots" content="noindex, nofollow" />}
 
       <link rel="canonical" href={url} />
+      <link rel="alternate" hreflang="hr" href={url} />
+      <link rel="alternate" hreflang="en" href={url} />
+      <link rel="alternate" hreflang="x-default" href={url} />
 
       {preloadImages?.map((p, idx) => (
         <link
@@ -80,6 +83,9 @@ const Seo = ({
       <meta property="og:description" content={fullDescription} />
       <meta property="og:url" content={url} />
       <meta property="og:image" content={image} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={fullTitle} />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />

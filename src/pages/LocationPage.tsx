@@ -69,7 +69,7 @@ const LocationPage = () => {
 
       <ContentSection
         eyebrow="Naše usluge"
-        title={`Što radimo u ${location.city.endsWith("a") || location.city.endsWith("š") ? location.city + "u" : location.city}`}
+        title={`Što radimo u ${location.locative}`}
         variant="muted"
       >
         <FeatureGrid
@@ -128,7 +128,7 @@ const LocationPage = () => {
       />
 
       <CTABand
-        title={`Trebate selidbu ili prijevoz u ${location.city}?`}
+        title={`Trebate selidbu ili prijevoz u ${location.locative}?`}
         subtitle="Javite nam se za besplatnu procjenu — odgovaramo brzo."
       />
     </PageLayout>
