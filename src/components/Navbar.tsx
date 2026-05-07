@@ -181,17 +181,24 @@ const Navbar = () => {
 
         <button
           type="button"
-          className="md:hidden text-foreground p-1.5 rounded-lg hover:bg-secondary transition-colors"
+          className="md:hidden relative z-[60] -mr-2 inline-flex items-center justify-center text-foreground rounded-lg hover:bg-secondary active:bg-secondary/80 transition-colors"
           onClick={() => setOpen(!open)}
-          style={{ touchAction: "manipulation" }}
+          style={{
+            touchAction: "manipulation",
+            minWidth: 44,
+            minHeight: 44,
+            WebkitTapHighlightColor: "transparent",
+          }}
           aria-label={t("nav.menu")}
+          aria-expanded={open}
+          aria-controls="mobile-nav"
         >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          {open ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
         </button>
       </div>
 
       {open && (
-        <div className="border-b border-border bg-background">
+        <div id="mobile-nav" className="border-b border-border bg-background">
           <div className="px-6 py-4 flex flex-col gap-1 max-h-[80vh] overflow-y-auto">
               <details className="group">
                 <summary className="flex items-center justify-between text-sm font-semibold text-foreground py-2.5 px-3 rounded-lg hover:bg-secondary cursor-pointer list-none">
