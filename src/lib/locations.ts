@@ -3,6 +3,7 @@ export type LocationData = {
   path: string;
   navLabel: string;
   city: string;
+  locative: string;
   region?: string;
   isIsland?: boolean;
   metaTitle: string;
@@ -44,6 +45,7 @@ export const locations: LocationData[] = [
     path: "/selidbe-split",
     navLabel: "Split",
     city: "Split",
+    locative: "Splitu",
     region: "Splitsko-dalmatinska županija",
     metaTitle: "Selidbe Split | Kinesis Transport — selidbe stanova, kuća, ureda",
     metaDescription:
@@ -67,6 +69,7 @@ export const locations: LocationData[] = [
     path: "/selidbe-solin",
     navLabel: "Solin",
     city: "Solin",
+    locative: "Solinu",
     region: "Splitsko-dalmatinska županija",
     metaTitle: "Selidbe Solin | Kinesis Transport — kombi prijevoz Solin",
     metaDescription:
@@ -87,6 +90,7 @@ export const locations: LocationData[] = [
     path: "/selidbe-kastela",
     navLabel: "Kaštela",
     city: "Kaštela",
+    locative: "Kaštelima",
     region: "Splitsko-dalmatinska županija",
     metaTitle: "Selidbe Kaštela | Kinesis Transport — sva mjesta Kaštela",
     metaDescription:
@@ -116,6 +120,7 @@ export const locations: LocationData[] = [
     path: "/selidbe-trogir",
     navLabel: "Trogir",
     city: "Trogir",
+    locative: "Trogiru",
     region: "Splitsko-dalmatinska županija",
     metaTitle: "Selidbe Trogir | Kinesis Transport — kombi prijevoz",
     metaDescription:
@@ -136,6 +141,7 @@ export const locations: LocationData[] = [
     path: "/selidbe-omis",
     navLabel: "Omiš",
     city: "Omiš",
+    locative: "Omišu",
     region: "Splitsko-dalmatinska županija",
     metaTitle: "Selidbe Omiš | Kinesis Transport — kombi prijevoz",
     metaDescription:
@@ -156,6 +162,7 @@ export const locations: LocationData[] = [
     path: "/kombi-prijevoz-split",
     navLabel: "Kombi prijevoz Split",
     city: "Split",
+    locative: "Splitu",
     region: "Splitsko-dalmatinska županija",
     metaTitle: "Kombi prijevoz Split | Kinesis Transport — brzi i povoljan",
     metaDescription:
@@ -177,6 +184,7 @@ export const locations: LocationData[] = [
     path: "/selidbe-brac",
     navLabel: "Brač",
     city: "Brač",
+    locative: "Braču",
     region: "Otok Brač",
     isIsland: true,
     metaTitle: "Selidbe Brač | Kinesis Transport — Supetar, Bol, Postira",
@@ -198,6 +206,7 @@ export const locations: LocationData[] = [
     path: "/selidbe-hvar",
     navLabel: "Hvar",
     city: "Hvar",
+    locative: "Hvaru",
     region: "Otok Hvar",
     isIsland: true,
     metaTitle: "Selidbe Hvar | Kinesis Transport — Hvar, Stari Grad, Jelsa",
@@ -219,6 +228,7 @@ export const locations: LocationData[] = [
     path: "/selidbe-vis",
     navLabel: "Vis",
     city: "Vis",
+    locative: "Visu",
     region: "Otok Vis",
     isIsland: true,
     metaTitle: "Selidbe Vis | Kinesis Transport — Vis grad i Komiža",
@@ -239,6 +249,7 @@ export const locations: LocationData[] = [
     path: "/selidbe-solta",
     navLabel: "Šolta",
     city: "Šolta",
+    locative: "Šolti",
     region: "Otok Šolta",
     isIsland: true,
     metaTitle: "Selidbe Šolta | Kinesis Transport — Grohote, Stomorska, Maslinica",

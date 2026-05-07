@@ -1,8 +1,8 @@
 import { useTranslation } from "react-i18next";
 
 const flags = [
-  { lang: "hr", src: "https://flagcdn.com/hr.svg", label: "HR" },
-  { lang: "en", src: "https://flagcdn.com/gb.svg", label: "EN" },
+  { lang: "hr", emoji: "🇭🇷", label: "HR" },
+  { lang: "en", emoji: "🇬🇧", label: "EN" },
 ] as const;
 
 interface Props {
@@ -16,7 +16,7 @@ const LanguageSwitcher = ({ vertical = false }: Props) => {
 
   return (
     <div className={`flex ${vertical ? "flex-col gap-1.5" : "flex-row items-center gap-2"}`}>
-      {flags.map(({ lang, src, label }) => {
+      {flags.map(({ lang, emoji, label }) => {
         const active = current === lang;
         return (
           <button
@@ -28,13 +28,9 @@ const LanguageSwitcher = ({ vertical = false }: Props) => {
               active ? "opacity-100" : "opacity-40 hover:opacity-70"
             }`}
           >
-            <img
-              src={src}
-              alt={label}
-              width={24}
-              height={18}
-              className="rounded-sm object-cover w-6 h-[18px]"
-            />
+            <span className="text-lg leading-none" role="img" aria-label={label}>
+              {emoji}
+            </span>
             {!vertical && (
               <span
                 className={`text-[11px] font-bold leading-none ${

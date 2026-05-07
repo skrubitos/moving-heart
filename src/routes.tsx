@@ -52,6 +52,11 @@ export const routes: RouteRecord[] = [
         lazy: () => import("./pages/LocationPage"),
       })),
       {
+        path: "404",
+        lazy: () => import("./pages/NotFound"),
+        entry: "src/pages/NotFound.tsx",
+      },
+      {
         path: "*",
         lazy: () => import("./pages/NotFound"),
         entry: "src/pages/NotFound.tsx",

@@ -8,19 +8,26 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { PHONE_DISPLAY, PHONE_HREF, WHATSAPP_URL } from "@/lib/contact";
 
-const EMAILJS_SERVICE_ID = "service_73nbq1k";
-const EMAILJS_TEMPLATE_ID = "template_ff74b8e";
-const EMAILJS_PUBLIC_KEY = "sysll8DVvubfBv9ky";
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+const PHONE_RE = /^[+0-9 ()/\-]{6,20}$/;
 
 const ContactSection = () => {
   const { toast } = useToast();
   const { t } = useTranslation();
-  const [formData, setFormData] = useState({ name: "", phone: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", phone: "", message: "", website: "" });
   const [sending, setSending] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.phone.trim()) return;
+    if (formData.website) return; // honeypot — bot filled the hidden field
+    if (!PHONE_RE.test(formData.phone)) {
+      toast({ title: t("contact.errorTitle"), description: t("contact.errorDesc") });
+      return;
+    }
 
     setSending(true);
     emailjs
@@ -36,7 +43,7 @@ const ContactSection = () => {
       )
       .then(() => {
         toast({ title: t("contact.toastTitle"), description: t("contact.toastDesc") });
-        setFormData({ name: "", phone: "", message: "" });
+        setFormData({ name: "", phone: "", message: "", website: "" });
       })
       .catch(() => {
         toast({ title: t("contact.errorTitle"), description: t("contact.errorDesc") });
@@ -113,7 +120,18 @@ const ContactSection = () => {
           <div className="p-8 rounded-2xl border border-border bg-card">
             <h3 className="text-xl font-bold text-foreground mb-1">{t("contact.formTitle")}</h3>
             <p className="text-xs text-muted-foreground mb-6">{t("contact.formDesc")}</p>
-            <form onSubmit={handleSubmit} className="space-y-3">
+            <form onSubmit={handleSubmit} className="relative space-y-3">
+              {/* Honeypot — hidden from real users, filled by bots */}
+              <input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                value={formData.website}
+                onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                className="absolute left-[-9999px] w-px h-px"
+                aria-hidden="true"
+              />
               <Input
                 placeholder={t("contact.namePlaceholder")}
                 value={formData.name}

@@ -2,6 +2,12 @@ import { readdir, readFile, writeFile, stat } from "node:fs/promises";
 import { join } from "node:path";
 import { gzipSync, brotliCompressSync, constants } from "node:zlib";
 
+// On non-production Vercel deploys, block all crawlers to avoid duplicate-content indexing.
+if (process.env.VERCEL_ENV && process.env.VERCEL_ENV !== "production") {
+  await writeFile(join("dist", "robots.txt"), "User-agent: *\nDisallow: /\n");
+  console.log("[compress] Non-production build: dist/robots.txt set to Disallow: /");
+}
+
 const DIST = "dist";
 const EXTS = [".html", ".css", ".js", ".json", ".svg", ".xml", ".webmanifest", ".txt"];
 const MIN_SIZE = 1024;

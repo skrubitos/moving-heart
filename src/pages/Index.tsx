@@ -5,7 +5,6 @@ import TrustSection from "@/components/TrustSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import StickyContact from "@/components/StickyContact";
-import BottomNav from "@/components/BottomNav";
 import Seo from "@/components/Seo";
 import heroLogoAvif from "../../slike/kinesis-transport-logo.avif";
 import heroLogoWebp from "../../slike/kinesis-transport-logo.webp";
@@ -82,7 +81,6 @@ const Index = () => {
       <ContactSection />
       <Footer />
       <StickyContact />
-      <BottomNav />
     </div>
   );
 };
